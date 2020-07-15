@@ -1,7 +1,10 @@
 package utils;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import DTO.ConferenceDetailDTO;
+
+import javafx.geometry.Pos;
+import javafx.scene.control.TableCell;
+import javafx.scene.layout.VBox;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -12,31 +15,29 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
+import javafx.scene.control.Label;
 
 public class Utils {
-    public static String convertUTF8IntoString(String rawString){
+    public static String convertUTF8IntoString(String rawString) {
         ByteBuffer buffer = StandardCharsets.UTF_8.encode(rawString);
         return StandardCharsets.UTF_8.decode(buffer).toString();
     }
 
-    public static String TimeFormat(Timestamp timestamp){
+    public static String TimeFormat(Timestamp timestamp) {
         String hour = new SimpleDateFormat("HH").format(timestamp);
         String minute = new SimpleDateFormat("mm").format(timestamp);
         String date = new SimpleDateFormat("dd/MM/yyyy").format(timestamp);
-       return hour + Utils.convertUTF8IntoString("h")+ minute
-               +Utils.convertUTF8IntoString(" - ") + date;
+        return hour + Utils.convertUTF8IntoString("h") + minute
+                + Utils.convertUTF8IntoString(" - ") + date;
     }
 
-    public static String md5(String str){
+    public static String md5(String str) {
         String result = "";
         MessageDigest digest;
         try {
             digest = MessageDigest.getInstance("MD5");
             digest.update(str.getBytes());
-            BigInteger bigInteger = new BigInteger(1,digest.digest());
+            BigInteger bigInteger = new BigInteger(1, digest.digest());
             result = bigInteger.toString(16);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
@@ -46,13 +47,13 @@ public class Utils {
 
     public static BufferedImage createResizedCopy(BufferedImage originalImage, int framesWidth, int framesHeight,
                                                   boolean preserveAlpha) {
-        Dimension imageOld = new Dimension(originalImage.getWidth(),originalImage.getHeight());
-        Dimension frames = new Dimension(framesWidth,framesHeight);
-        Dimension imageNew = getScaledDimension(imageOld,frames);
+        Dimension imageOld = new Dimension(originalImage.getWidth(), originalImage.getHeight());
+        Dimension frames = new Dimension(framesWidth, framesHeight);
+        Dimension imageNew = getScaledDimension(imageOld, frames);
         int imageType = preserveAlpha ? BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB;
         int width = (int) Math.round(imageNew.getWidth());
         int height = (int) Math.round(imageNew.getHeight());
-        BufferedImage scaledBI = new BufferedImage(width,height,imageType);
+        BufferedImage scaledBI = new BufferedImage(width, height, imageType);
         Graphics2D g = scaledBI.createGraphics();
         if (preserveAlpha) {
             g.setComposite(AlphaComposite.Src);
@@ -89,5 +90,27 @@ public class Utils {
 
         return new Dimension(new_width, new_height);
     }
+
+    public static TableCell<ConferenceDetailDTO, String> getTableCellCustom() {
+        return new TableCell<ConferenceDetailDTO, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    super.setText(null);
+                    super.setGraphic(null);
+                } else {
+                    super.setText(null);
+                    Label l = new Label(item);
+                    l.setWrapText(true);
+                    VBox box = new VBox(l);
+                    box.setPrefHeight(80);
+                    box.setAlignment(Pos.CENTER_LEFT);
+                    super.setGraphic(box);
+                }
+            }
+        };
+    }
+
 
 }
