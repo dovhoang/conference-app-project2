@@ -1,14 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="scene.UserProfile"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<GridPane fx:id="paneProfile" prefHeight="360.0" prefWidth="950.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserProfileController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="480.0" minWidth="10.0" prefWidth="379.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="616.0" minWidth="10.0" prefWidth="590.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="460.0" prefWidth="590.0" GridPane.columnIndex="1">
+            <children>
+                <AnchorPane layoutX="71.0" layoutY="130.0" maxHeight="200.0" maxWidth="450.0" prefHeight="180.0" prefWidth="439.0" style="-fx-border-color: #642EFE; -fx-border-radius: 10;" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="130.0">
+                    <children>
+                        <Label layoutX="34.0" layoutY="28.0" text="Mã người dùng">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Text fx:id="user_id" layoutX="202.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Label layoutX="34.0" layoutY="61.0" text="Tên đăng nhập">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Text fx:id="user_username" layoutX="202.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Label layoutX="34.0" layoutY="95.0" text="Email">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Text fx:id="user_email" layoutX="202.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Label layoutX="34.0" layoutY="128.0" text="Loại người dùng">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Text fx:id="user_type" layoutX="202.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Label layoutX="34.0" layoutY="161.0" text="Trạng thái">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Text fx:id="user_active" layoutX="202.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                    </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="200.0">
+            <children>
+                <Circle fill="DODGERBLUE" layoutX="100.0" layoutY="106.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="6.0" />
+                <Circle fill="WHITE" layoutX="100.0" layoutY="106.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                <Label fx:id="user_name" layoutX="28.0" layoutY="220.0" prefHeight="32.0" prefWidth="145.0" text="Đỗ Việt Hoàng" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="27.0">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <FontAwesomeIcon glyphName="USER" layoutX="41.0" layoutY="159.0" size="150" />
+            </children>
+            <GridPane.margin>
+                <Insets left="100.0" right="100.0" />
+            </GridPane.margin>
+        </AnchorPane>
+    </children>
+</GridPane>

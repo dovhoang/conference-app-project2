@@ -3,9 +3,9 @@ package utils;
 import DTO.ConferenceDetailDTO;
 
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.layout.VBox;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.math.BigInteger;
@@ -15,6 +15,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.List;
+
 import javafx.scene.control.Label;
 
 public class Utils {
@@ -112,5 +114,51 @@ public class Utils {
         };
     }
 
+    public static Button getButtonById(String id, List<Button> list){
+        for (Button button : list) {
+            if (button.getId().equals(id)){
+                return button;
+            }
+        }
+        return null;
+    }
+
+    //logged menu admin
+    public static void loggedMenuAdmin( List<Button> list) {
+
+        getButtonById("btnProfile",list).setVisible(true);
+        getButtonById("btnProfile",list).setManaged(true);
+
+        getButtonById("btnAddCfr",list).setVisible(true);
+        getButtonById("btnAddCfr",list).setManaged(true);
+
+        getButtonById("btnUserManager",list).setVisible(true);
+        getButtonById("btnUserManager",list).setManaged(true);
+
+        getButtonById("btnSignOut",list).setVisible(true);
+        getButtonById("btnSignOut",list).setManaged(true);
+
+        getButtonById("btnAppvoral",list).setVisible(true);
+        getButtonById("btnAppvoral",list).setManaged(true);
+
+        getButtonById("btnSignIn",list).setVisible(false);
+        getButtonById("btnSignIn",list).setManaged(false);
+    }
+
+    //logged menu view
+    public static void loggedMenuUser(List<Button> list) {
+
+        getButtonById("btnProfile",list).setVisible(true);
+        getButtonById("btnProfile",list).setManaged(true);
+
+        getButtonById("btnMyCfr",list).setVisible(true);
+        getButtonById("btnMyCfr",list).setManaged(true);
+
+        getButtonById("btnSignOut",list).setVisible(true);
+        getButtonById("btnSignOut",list).setManaged(true);
+
+        getButtonById("btnSignIn",list).setVisible(false);
+        getButtonById("btnSignIn",list).setManaged(false);
+    }
 
 }

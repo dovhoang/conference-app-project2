@@ -33,7 +33,7 @@
                   <Text fx:id="helloUser" fill="WHITE" layoutX="77.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="144.72069549560547" />
                </children>
             </Pane>
-            <Button fx:id="btnList" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" onAction="#handClick" prefHeight="57.0" prefWidth="230.0" text="Danh sách hội nghị" textFill="WHITE">
+            <Button fx:id="btnList" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="230.0" text="Danh sách hội nghị" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -47,7 +47,7 @@
                   <FontAwesomeIcon fill="WHITE" glyphName="LIST" size="20" />
                </graphic>
             </Button>
-            <Button fx:id="btnAddCfr" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" onAction="#handClick" prefHeight="57.0" prefWidth="230.0" text="Thêm hội nghị" textFill="WHITE">
+            <Button fx:id="btnAddCfr" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="230.0" text="Thêm hội nghị" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -61,7 +61,7 @@
                   <FontAwesomeIcon fill="WHITE" glyphName="PLUS" size="20" />
                </graphic>
             </Button>
-            <Button fx:id="btnAppvoral" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" onAction="#handClick" prefHeight="57.0" prefWidth="230.0" text="Duyệt tham gia" textFill="WHITE">
+            <Button fx:id="btnAppvoral" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="230.0" text="Duyệt tham gia" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -75,7 +75,7 @@
                   <FontAwesomeIcon fill="WHITE" size="20" />
                </graphic>
             </Button>
-            <Button fx:id="btnUserManager" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" onAction="#handClick" prefHeight="57.0" prefWidth="230.0" text="Quản lí người dùng" textFill="WHITE">
+            <Button fx:id="btnUserManager" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="230.0" text="Quản lí người dùng" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -89,7 +89,7 @@
                   <FontAwesomeIcon fill="WHITE" glyphName="USERS" size="20" />
                </graphic>
             </Button>
-            <Button fx:id="btnProfile" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" onAction="#handClick" prefHeight="57.0" prefWidth="230.0" text="Hồ sơ" textFill="WHITE">
+            <Button fx:id="btnProfile" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="230.0" text="Hồ sơ" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -103,7 +103,7 @@
                   <FontAwesomeIcon fill="WHITE" glyphName="USER" size="20" />
                </graphic>
             </Button>
-            <Button fx:id="btnMyCfr" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" onAction="#handClick" prefHeight="57.0" prefWidth="230.0" text="Hội nghị của tôi" textFill="WHITE">
+            <Button fx:id="btnMyCfr" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="230.0" text="Hội nghị của tôi" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -117,7 +117,7 @@
                   <FontAwesomeIcon fill="WHITE" glyphName="TAGS" size="20" />
                </graphic>
             </Button>
-            <Button fx:id="btnSetting" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" onAction="#handClick" prefHeight="57.0" prefWidth="230.0" text="Cài đặt" textFill="WHITE">
+            <Button fx:id="btnSetting" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="230.0" text="Cài đặt" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -131,7 +131,7 @@
                   <FontAwesomeIcon fill="WHITE" glyphName="COG" size="20" />
                </graphic>
             </Button>
-            <Button fx:id="btnSignIn" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" onAction="#handClick" prefHeight="57.0" prefWidth="230.0" text="Đăng nhập" textFill="WHITE">
+            <Button fx:id="btnSignIn" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="230.0" text="Đăng nhập" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -145,7 +145,7 @@
                   <FontAwesomeIcon fill="WHITE" glyphName="SIGN_IN" size="20" />
                </graphic>
             </Button>
-            <Button fx:id="btnSignOut" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" onAction="#handClick" prefHeight="57.0" prefWidth="230.0" text="Đăng xuất" textFill="WHITE">
+            <Button fx:id="btnSignOut" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="230.0" text="Đăng xuất" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -168,7 +168,7 @@
          <children>
             <Pane fx:id="paneTitle" maxWidth="-Infinity" prefHeight="109.0" prefWidth="969.0" style="-fx-background-color: #642EFE;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Label fx:id="cfr_id" layoutX="37.0" layoutY="36.0" text="Danh sách hội nghị/ Mã số" textFill="WHITE">
+                  <Label fx:id="cfr_id" layoutX="37.0" layoutY="20.0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -176,7 +176,7 @@
                   <Button layoutX="785.0" layoutY="39.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="134.0" style="-fx-background-color: #FF0000;" text="Chỉnh sửa" textAlignment="CENTER" visible="false" />
                   <AnchorPane layoutX="37.0" layoutY="55.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="909.0">
                      <children>
-                        <Label fx:id="title_name" layoutX="-2.0" layoutY="1.0" prefHeight="46.0" prefWidth="909.0" text="TÊN HỘI NGHỊ" textFill="WHITE" wrapText="true">
+                        <Label fx:id="title_name" layoutX="-14.0" layoutY="-9.0" prefHeight="46.0" prefWidth="909.0" text="TÊN HỘI NGHỊ" textFill="WHITE" wrapText="true">
                            <font>
                               <Font name="System Bold" size="28.0" />
                            </font>
@@ -187,507 +187,10 @@
             </Pane>
             <StackPane fx:id="stackPane" layoutY="109.0" maxHeight="1.7976931348623157E308" prefHeight="433.0" prefWidth="970.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
 <!--               <children>-->
-<!--                  <GridPane fx:id="paneMyCfr" style="-fx-background-color: #ffff;">-->
-<!--                    <columnConstraints>-->
-<!--                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />-->
-<!--                    </columnConstraints>-->
-<!--                    <rowConstraints>-->
-<!--                      <RowConstraints maxHeight="225.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />-->
-<!--                      <RowConstraints maxHeight="408.0" minHeight="10.0" prefHeight="408.0" vgrow="SOMETIMES" />-->
-<!--                    </rowConstraints>-->
-<!--                     <StackPane.margin>-->
-<!--                        <Insets />-->
-<!--                     </StackPane.margin>-->
-<!--                     <children>-->
-<!--                        <HBox alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="200.0">-->
-<!--                           <children>-->
-<!--                              <Button graphicTextGap="10.0" mnemonicParsing="false" style="-fx-border-radius: 20;" text="Tìm kiếm" textFill="WHITE">-->
-<!--                                 <graphic>-->
 
-<!--                                 </graphic>-->
-<!--                                 <padding>-->
-<!--                                    <Insets left="20.0" right="20.0" />-->
-<!--                                 </padding>-->
-<!--                                 <HBox.margin>-->
-<!--                                    <Insets left="20.0" right="20.0" />-->
-<!--                                 </HBox.margin>-->
-<!--                              </Button>-->
-<!--                              <TextField prefHeight="26.0" prefWidth="321.0" />-->
-<!--                           </children>-->
-<!--                        </HBox>-->
-<!--                        <TableView fx:id="myCfr_table" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">-->
-<!--                          <columns>-->
-<!--                            <TableColumn fx:id="myCfr_id" prefWidth="75.0" text="Mã số" />-->
-<!--                            <TableColumn fx:id="myCfr_name" prefWidth="257.0000305175781" text="Tên hội nghị" />-->
-<!--                              <TableColumn fx:id="myCfr_time" minWidth="0.0" prefWidth="152.0" text="Thời gian" />-->
-<!--                              <TableColumn fx:id="myCfr_address" prefWidth="298.0" text="Địa điểm" />-->
-<!--                              <TableColumn fx:id="myCfr_status" minWidth="0.0" prefWidth="165.0" text="Trạng thái" />-->
-<!--                          </columns>-->
-<!--                           <GridPane.margin>-->
-<!--                              <Insets bottom="50.0" left="20.0" right="20.0" />-->
-<!--                           </GridPane.margin>-->
-<!--                        </TableView>-->
-<!--                     </children>-->
-<!--                  </GridPane>-->
-<!--                  <GridPane fx:id="paneApproval" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="360.0" prefWidth="950.0" style="-fx-background-color: #ffff;">-->
-<!--                     <columnConstraints>-->
-<!--                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />-->
-<!--                     </columnConstraints>-->
-<!--                     <rowConstraints>-->
-<!--                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />-->
-<!--                        <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />-->
-<!--                     </rowConstraints>-->
-<!--                     <children>-->
-<!--                        <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0">-->
-<!--                           <children>-->
-<!--                              <Button graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="94.0" style="-fx-background-color: #0B0B3B; -fx-border-radius: 20;" text="Tìm kiếm" textFill="WHITE">-->
-<!--                                 <HBox.margin>-->
-<!--                                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />-->
-<!--                                 </HBox.margin>-->
-<!--                                 <graphic>-->
-<!--                                 -->
-<!--                                 </graphic>-->
-<!--                                 <font>-->
-<!--                                    <Font size="10.0" />-->
-<!--                                 </font>-->
-<!--                                 <padding>-->
-<!--                                    <Insets left="10.0" right="10.0" />-->
-<!--                                 </padding>-->
-<!--                                 <graphic>-->
-<!--                                    <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" />-->
-<!--                                 </graphic>-->
-<!--                              </Button>-->
-<!--                              <TextField minWidth="-Infinity" prefHeight="25.0" prefWidth="332.0">-->
-<!--                                 <HBox.margin>-->
-<!--                                    <Insets bottom="10.0" top="10.0" />-->
-<!--                                 </HBox.margin>-->
-<!--                              </TextField>-->
-<!--                           </children>-->
-<!--                        </HBox>-->
-<!--                        <TableView fx:id="table_approval" prefHeight="410.0" prefWidth="936.0" GridPane.rowIndex="1">-->
-<!--                           <columns>-->
-<!--                              <TableColumn fx:id="approval_id" maxWidth="49.0" minWidth="49.0" prefWidth="49.0" resizable="false" text="Mã số" />-->
-<!--                              <TableColumn fx:id="approval_username" maxWidth="233.0" prefWidth="162.0" resizable="false" text="Username" />-->
-<!--                              <TableColumn fx:id="approval_name" minWidth="0.0" prefWidth="203.0" resizable="false" text="Họ và tên" />-->
-<!--                              <TableColumn fx:id="approval_cfr" prefWidth="313.0" resizable="false" text="Hội nghị" />-->
-<!--                           </columns>-->
-<!--                           <GridPane.margin>-->
-<!--                              <Insets left="20.0" right="20.0" />-->
-<!--                           </GridPane.margin>-->
-<!--                        </TableView>-->
-<!--                     </children>-->
-<!--                  </GridPane>-->
-<!--                  <GridPane fx:id="paneProfile" style="-fx-background-color: #FFFF;">-->
-<!--                    <columnConstraints>-->
-<!--                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="480.0" minWidth="10.0" prefWidth="379.0" />-->
-<!--                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="616.0" minWidth="10.0" prefWidth="590.0" />-->
-<!--                    </columnConstraints>-->
-<!--                    <rowConstraints>-->
-<!--                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />-->
-<!--                    </rowConstraints>-->
-<!--                     <children>-->
-<!--                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="460.0" prefWidth="590.0" GridPane.columnIndex="1">-->
-<!--                           <children>-->
-<!--                              <AnchorPane layoutX="71.0" layoutY="130.0" maxHeight="200.0" maxWidth="450.0" prefHeight="200.0" prefWidth="450.0" style="-fx-border-color: #642EFE; -fx-border-radius: 10;" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="130.0">-->
-<!--                                 <children>-->
-<!--                                    <Label layoutX="34.0" layoutY="28.0" text="Mã người dùng">-->
-<!--                                       <font>-->
-<!--                                          <Font name="System Bold" size="14.0" />-->
-<!--                                       </font>-->
-<!--                                    </Label>-->
-<!--                                    <Text fx:id="user_id" layoutX="202.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />-->
-<!--                                    <Label layoutX="34.0" layoutY="61.0" text="Tên đăng nhập">-->
-<!--                                       <font>-->
-<!--                                          <Font name="System Bold" size="14.0" />-->
-<!--                                       </font>-->
-<!--                                    </Label>-->
-<!--                                    <Text fx:id="user_username" layoutX="202.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />-->
-<!--                                    <Label layoutX="34.0" layoutY="95.0" text="Email">-->
-<!--                                       <font>-->
-<!--                                          <Font name="System Bold" size="14.0" />-->
-<!--                                       </font>-->
-<!--                                    </Label>-->
-<!--                                    <Text fx:id="user_email" layoutX="202.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />-->
-<!--                                    <Label layoutX="34.0" layoutY="128.0" text="Loại người dùng">-->
-<!--                                       <font>-->
-<!--                                          <Font name="System Bold" size="14.0" />-->
-<!--                                       </font>-->
-<!--                                    </Label>-->
-<!--                                    <Text fx:id="user_type" layoutX="202.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />-->
-<!--                                    <Label layoutX="34.0" layoutY="161.0" text="Trạng thái">-->
-<!--                                       <font>-->
-<!--                                          <Font name="System Bold" size="14.0" />-->
-<!--                                       </font>-->
-<!--                                    </Label>-->
-<!--                                    <Text fx:id="user_active" layoutX="202.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />-->
-<!--                                 </children>-->
-<!--                              </AnchorPane>-->
-<!--                           </children>-->
-<!--                        </AnchorPane>-->
-<!--                        <AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="200.0">-->
-<!--                           <children>-->
-<!--                              <Circle fill="DODGERBLUE" layoutX="100.0" layoutY="106.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="6.0" />-->
-<!--                              <Circle fill="WHITE" layoutX="100.0" layoutY="106.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />-->
-<!--                              <Label fx:id="user_name" layoutX="28.0" layoutY="220.0" prefHeight="32.0" prefWidth="145.0" text="Đỗ Việt Hoàng" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="27.0">-->
-<!--                                 <font>-->
-<!--                                    <Font size="20.0" />-->
-<!--                                 </font>-->
-<!--                              </Label>-->
-<!--                              <FontAwesomeIcon glyphName="USER" layoutX="41.0" layoutY="159.0" size="150" />-->
-<!--                           </children>-->
-<!--                           <GridPane.margin>-->
-<!--                              <Insets left="100.0" right="100.0" />-->
-<!--                           </GridPane.margin>-->
-<!--                        </AnchorPane>-->
-<!--                     </children>-->
-<!--                  </GridPane>-->
-<!--                  <GridPane fx:id="paneList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="360.0" prefWidth="950.0" style="-fx-background-color: #ffff;">-->
-<!--                    <columnConstraints>-->
-<!--                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />-->
-<!--                    </columnConstraints>-->
-<!--                    <rowConstraints>-->
-<!--                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />-->
-<!--                      <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />-->
-<!--                    </rowConstraints>-->
-<!--                     <children>-->
-<!--                        <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0">-->
-<!--                           <children>-->
-<!--                              <Button graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="94.0" style="-fx-background-color: #0B0B3B; -fx-border-radius: 20;" text="Tìm kiếm" textFill="WHITE">-->
-<!--                                 <HBox.margin>-->
-<!--                                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />-->
-<!--                                 </HBox.margin>-->
-<!--                                 <graphic>-->
 
-<!--                                 </graphic>-->
-<!--                                 <font>-->
-<!--                                    <Font size="10.0" />-->
-<!--                                 </font>-->
-<!--                                 <padding>-->
-<!--                                    <Insets left="10.0" right="10.0" />-->
-<!--                                 </padding>-->
-<!--                              </Button>-->
-<!--                              <TextField minWidth="-Infinity" prefHeight="25.0" prefWidth="332.0">-->
-<!--                                 <HBox.margin>-->
-<!--                                    <Insets bottom="10.0" top="10.0" />-->
-<!--                                 </HBox.margin>-->
-<!--                              </TextField>-->
-<!--                           </children>-->
-<!--                        </HBox>-->
-<!--                        <TableView fx:id="table" prefHeight="410.0" prefWidth="936.0" GridPane.rowIndex="1">-->
-<!--                          <columns>-->
-<!--                            <TableColumn fx:id="table_id" maxWidth="49.0" minWidth="49.0" prefWidth="49.0" resizable="false" text="Mã số" />-->
-<!--                            <TableColumn fx:id="table_name" maxWidth="233.0" prefWidth="197.0" resizable="false" text="Hội nghị" />-->
-<!--                              <TableColumn fx:id="table_time" minWidth="0.0" prefWidth="125.0" resizable="false" text="Thời gian" />-->
-<!--                              <TableColumn fx:id="table_place" prefWidth="188.0" resizable="false" text="Địa điểm" />-->
-<!--                              <TableColumn fx:id="table_info" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="367.0" text="Tóm tắt" />-->
-<!--                          </columns>-->
-<!--                           <GridPane.margin>-->
-<!--                              <Insets left="20.0" right="20.0" />-->
-<!--                           </GridPane.margin>-->
-<!--                        </TableView>-->
-<!--                     </children>-->
-<!--                  </GridPane>-->
-<!--                  <GridPane fx:id="paneUserManager" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="360.0" prefWidth="950.0" style="-fx-background-color: #ffff;">-->
-<!--                     <columnConstraints>-->
-<!--                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />-->
-<!--                     </columnConstraints>-->
-<!--                     <rowConstraints>-->
-<!--                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />-->
-<!--                        <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />-->
-<!--                     </rowConstraints>-->
-<!--                     <children>-->
-<!--                        <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0">-->
-<!--                           <children>-->
-<!--                              <Button graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="94.0" style="-fx-background-color: #0B0B3B; -fx-border-radius: 20;" text="Tìm kiếm" textFill="WHITE">-->
-<!--                                 <HBox.margin>-->
-<!--                                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />-->
-<!--                                 </HBox.margin>-->
-<!--                                 <font>-->
-<!--                                    <Font size="10.0" />-->
-<!--                                 </font>-->
-<!--                                 <padding>-->
-<!--                                    <Insets left="10.0" right="10.0" />-->
-<!--                                 </padding>-->
-<!--                                 <graphic>-->
-<!--                                    <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" size="12" />-->
-<!--                                 </graphic>-->
-<!--                              </Button>-->
-<!--                              <TextField minWidth="-Infinity" prefHeight="25.0" prefWidth="332.0">-->
-<!--                                 <HBox.margin>-->
-<!--                                    <Insets bottom="10.0" top="10.0" />-->
-<!--                                 </HBox.margin>-->
-<!--                              </TextField>-->
-<!--                           </children>-->
-<!--                        </HBox>-->
-<!--                        <TableView fx:id="table_userManager" prefHeight="410.0" prefWidth="936.0" GridPane.rowIndex="1">-->
-<!--                           <columns>-->
-<!--                              <TableColumn fx:id="userManager_id" maxWidth="49.0" minWidth="49.0" prefWidth="49.0" resizable="false" text="Mã số" />-->
-<!--                              <TableColumn fx:id="userManager_username" maxWidth="233.0" prefWidth="185.0" resizable="false" text="Username" />-->
-<!--                              <TableColumn fx:id="userManager_name" minWidth="0.0" prefWidth="212.0" resizable="false" text="Họ và tên" />-->
-<!--                              <TableColumn fx:id="userManager_email" prefWidth="259.0" resizable="false" text="Email" />-->
-<!--                              <TableColumn fx:id="userManager_status" prefWidth="134.0" resizable="false" text="Trạng thái" />-->
-<!--                           </columns>-->
-<!--                           <GridPane.margin>-->
-<!--                              <Insets left="20.0" right="20.0" />-->
-<!--                           </GridPane.margin>-->
-<!--                        </TableView>-->
-<!--                     </children>-->
-<!--                  </GridPane>-->
-<!--                  <AnchorPane fx:id="paneSignIn" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff;">-->
-<!--                     <children>-->
-<!--                        <Pane fx:id="paneWelcome" layoutX="55.900001525878906" layoutY="146.0">-->
-<!--                           <children>-->
-<!--                              <Label layoutX="4.099998474121094" text="Chào mừng đến với ConferenceApp">-->
-<!--                                 <font>-->
-<!--                                    <Font size="23.0" />-->
-<!--                                 </font>-->
-<!--                              </Label>-->
-<!--                              <Label layoutX="4.099998474121094" layoutY="34.0" prefHeight="50.0" prefWidth="312.0" text="Đăng kí tham gia các hội nghị trực tuyến, dễ dàng và nhanh chóng" wrapText="true" />-->
-<!--                              <Button fx:id="btnSignUp" graphicTextGap="0.0" layoutX="4.099998474121094" layoutY="101.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="145.0" text="Đăng kí" textAlignment="CENTER" textFill="WHITE" />-->
-<!--                           </children>-->
-<!--                        </Pane>-->
-<!--                        <Pane fx:id="paneFormSignIn" layoutX="531.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="261.0" prefWidth="321.0" style="-fx-border-color: #0B0B3B;">-->
-<!--                           <children>-->
-<!--                              <Label layoutX="22.0" layoutY="73.0" text="Tên tài khoản" />-->
-<!--                              <Label layoutX="22.0" layoutY="131.0" text="Mật khẩu" />-->
-<!--                              <TextField fx:id="signInUsername" layoutX="22.0" layoutY="91.0" prefHeight="26.0" prefWidth="278.0" />-->
-<!--                              <PasswordField fx:id="signInPassword" layoutX="23.0" layoutY="148.0" prefHeight="25.0" prefWidth="278.0" />-->
-<!--                              <Button fx:id="btnSignInForm" layoutX="121.0" layoutY="192.0" mnemonicParsing="false" onAction="#handClick" text="Đăng nhập" textFill="WHITE" />-->
-<!--                              <Pane layoutX="1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="321.0" style="-fx-background-color: #0B0B3B; -fx-border-color: #0B0B3B;">-->
-<!--                                 <children>-->
-<!--                                    <Label layoutX="85.0" layoutY="2.0" prefHeight="42.0" prefWidth="152.0" text="ConferenceApp" textFill="WHITE">-->
-<!--                                       <font>-->
-<!--                                          <Font name="VNI-Univer" size="18.0" />-->
-<!--                                       </font>-->
-<!--                                       <graphic>-->
 
-<!--                                       </graphic>-->
-<!--                                    </Label>-->
-<!--                                 </children>-->
-<!--                              </Pane>-->
-<!--                              <Text fx:id="signInError" fill="RED" layoutX="1.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="321.0" />-->
-<!--                           </children>-->
-<!--                        </Pane>-->
-<!--                        <Pane fx:id="paneFormSignUp" layoutX="325.0" layoutY="17.0" prefHeight="427.0" prefWidth="321.0" style="-fx-border-color: #0B0B3B;">-->
-<!--                           <children>-->
-<!--                              <Label layoutX="22.0" layoutY="73.0" text="Tên tài khoản" />-->
-<!--                              <Label layoutX="22.0" layoutY="131.0" text="Họ và tên" />-->
-<!--                              <TextField fx:id="signUpUsername" layoutX="22.0" layoutY="91.0" prefHeight="26.0" prefWidth="278.0" />-->
-<!--                              <TextField fx:id="signUpName" layoutX="22.0" layoutY="149.0" prefHeight="26.0" prefWidth="278.0" />-->
-<!--                              <Button fx:id="btnSignUpForm" layoutX="115.0" layoutY="367.0" mnemonicParsing="false" onAction="#handClick" prefHeight="32.0" prefWidth="94.0" text="Đăng ký" textFill="WHITE" />-->
-<!--                              <Pane layoutX="1.0" prefHeight="46.0" prefWidth="321.0" style="-fx-background-color: #0B0B3B; -fx-border-color: #0B0B3B;">-->
-<!--                                 <children>-->
-<!--                                    <Label layoutX="85.0" layoutY="2.0" prefHeight="42.0" prefWidth="152.0" text="ConferenceApp" textFill="WHITE">-->
-<!--                                       <font>-->
-<!--                                          <Font name="VNI-Univer" size="18.0" />-->
-<!--                                       </font>-->
-<!--                                       <graphic>-->
 
-<!--                                       </graphic>-->
-<!--                                    </Label>-->
-<!--                                 </children>-->
-<!--                              </Pane>-->
-<!--                              <Label layoutX="22.0" layoutY="194.0" text="Email" />-->
-<!--                              <TextField fx:id="signUpEmail" layoutX="22.0" layoutY="212.0" prefHeight="26.0" prefWidth="278.0" />-->
-<!--                              <Label layoutX="22.0" layoutY="253.0" text="Mật khẩu" />-->
-<!--                              <Label layoutX="23.0" layoutY="309.0" text="Nhập lại mật khẩu" />-->
-<!--                              <PasswordField fx:id="signUpPassword" layoutX="23.0" layoutY="270.0" prefHeight="25.0" prefWidth="278.0" />-->
-<!--                              <PasswordField fx:id="signUpPasswordRepeat" layoutX="23.0" layoutY="326.0" prefHeight="25.0" prefWidth="278.0" />-->
-<!--                           </children>-->
-<!--                        </Pane>-->
-<!--                        <Pane fx:id="paneSignUpError" layoutX="668.0" layoutY="213.0" style="-fx-border-color: #000000; -fx-border-radius: 10;">-->
-<!--                           <children>-->
-<!--                              <Text fx:id="signUpError" fill="RED" layoutX="6.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="186.78710937500006" />-->
-<!--                           </children>-->
-<!--                        </Pane>-->
-<!--                     </children>-->
-<!--                  </AnchorPane>-->
-<!--                  <GridPane fx:id="paneCfr" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="316.0" prefWidth="950.0" style="-fx-background-color: #ffff;">-->
-<!--                     <columnConstraints>-->
-<!--                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />-->
-<!--                     </columnConstraints>-->
-<!--                     <rowConstraints>-->
-<!--                        <RowConstraints minHeight="-Infinity" prefHeight="450.0" vgrow="SOMETIMES" />-->
-<!--                     </rowConstraints>-->
-<!--                     <children>-->
-<!--                        <SplitPane dividerPositions="0.1877637130801688, 0.7679324894514767">-->
-<!--                           <items>-->
-<!--                              <VBox maxWidth="170.0" prefHeight="458.0" prefWidth="170.0">-->
-<!--                                 <children>-->
-<!--                                    <Label prefHeight="42.0" prefWidth="174.0" text="Thời gian" textFill="#642efe" wrapText="true">-->
-<!--                                       <graphic>-->
-<!--                                       </graphic>-->
-<!--                                       <padding>-->
-<!--                                          <Insets left="10.0" />-->
-<!--                                       </padding>-->
-<!--                                       <graphic>-->
-<!--                                          <FontAwesomeIcon fill="#2d75e8" glyphName="CALENDAR" />-->
-<!--                                       </graphic>-->
-<!--                                    </Label>-->
-<!--                                    <Text fx:id="cfr_time" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="159.9830722808838">-->
-<!--                                       <VBox.margin>-->
-<!--                                          <Insets bottom="10.0" left="10.0" top="5.0" />-->
-<!--                                       </VBox.margin>-->
-<!--                                    </Text>-->
-<!--                                    <Label prefHeight="42.0" prefWidth="174.0" text="Địa điểm tổ chức" textFill="#642efe">-->
-<!--                                       <graphic>-->
-
-<!--                                       </graphic>-->
-<!--                                       <padding>-->
-<!--                                          <Insets left="10.0" />-->
-<!--                                       </padding>-->
-<!--                                       <graphic>-->
-<!--                                          <FontAwesomeIcon fill="#2d75e8" glyphName="HOME" />-->
-<!--                                       </graphic>-->
-<!--                                    </Label>-->
-<!--                                    <Text fx:id="cfr_place" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="158.9830722808838">-->
-<!--                                       <VBox.margin>-->
-<!--                                          <Insets bottom="10.0" left="10.0" top="5.0" />-->
-<!--                                       </VBox.margin>-->
-<!--                                    </Text>-->
-<!--                                    <Label prefHeight="42.0" prefWidth="174.0" text="Địa chỉ" textFill="#642efe">-->
-<!--                                       <graphic>-->
-
-<!--                                       </graphic>-->
-<!--                                       <padding>-->
-<!--                                          <Insets left="10.0" />-->
-<!--                                       </padding>-->
-<!--                                       <graphic>-->
-<!--                                          <FontAwesomeIcon fill="#2d75e8" glyphName="FLAG" />-->
-<!--                                       </graphic>-->
-<!--                                    </Label>-->
-<!--                                    <Text fx:id="cfr_address" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="156.9830722808838">-->
-<!--                                       <VBox.margin>-->
-<!--                                          <Insets bottom="10.0" left="10.0" top="5.0" />-->
-<!--                                       </VBox.margin>-->
-<!--                                    </Text>-->
-<!--                                    <Label prefHeight="18.0" prefWidth="173.0" text="Đã đăng ký">-->
-<!--                                       <VBox.margin>-->
-<!--                                          <Insets left="10.0" top="30.0" />-->
-<!--                                       </VBox.margin>-->
-<!--                                       <graphic>-->
-
-<!--                                       </graphic>-->
-<!--                                       <graphic>-->
-<!--                                          <FontAwesomeIcon fill="#2d75e8" glyphName="CHECK" />-->
-<!--                                       </graphic>-->
-<!--                                    </Label>-->
-<!--                                    <Text fx:id="cfr_numAttendees" strokeType="OUTSIDE" strokeWidth="0.0" text="102/200" textAlignment="CENTER" wrappingWidth="152.41666793823242">-->
-<!--                                       <VBox.margin>-->
-<!--                                          <Insets left="10.0" right="10.0" />-->
-<!--                                       </VBox.margin>-->
-<!--                                    </Text>-->
-<!--                                    <ProgressBar fx:id="cfr_pgNumAttendees" prefWidth="200.0" progress="0.51" style="-fx-background-color: #642efe;">-->
-<!--                                       <VBox.margin>-->
-<!--                                          <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />-->
-<!--                                       </VBox.margin>-->
-<!--                                    </ProgressBar>-->
-<!--                                    <Button fx:id="btnRegisterCfr" mnemonicParsing="false" onAction="#handClick" prefHeight="32.0" prefWidth="181.0" text="Đăng kí" textFill="WHITE">-->
-<!--                                       <VBox.margin>-->
-<!--                                          <Insets bottom="10.0" left="20.0" right="20.0" top="15.0" />-->
-<!--                                       </VBox.margin>-->
-<!--                                    </Button>-->
-<!--                                    <Button fx:id="btnEditCfr" mnemonicParsing="false" prefHeight="33.0" prefWidth="133.0" style="-fx-background-color: #ff0000;" text="Chỉnh sửa" textFill="WHITE">-->
-<!--                                       <VBox.margin>-->
-<!--                                          <Insets left="20.0" top="10.0" />-->
-<!--                                       </VBox.margin>-->
-<!--                                    </Button>-->
-<!--                                 </children>-->
-<!--                              </VBox>-->
-<!--                              <VBox prefHeight="458.0" prefWidth="339.0">-->
-<!--                                 <children>-->
-<!--                                    <Pane prefWidth="781.0">-->
-<!--                                       <children>-->
-<!--                                          <Label layoutY="5.0" prefHeight="19.0" prefWidth="98.0" text="Tổng quan">-->
-<!--                                             <padding>-->
-<!--                                                <Insets left="20.0" />-->
-<!--                                             </padding>-->
-<!--                                             <font>-->
-<!--                                                <Font name="Times New Roman Bold" size="16.0" />-->
-<!--                                             </font>-->
-<!--                                          </Label>-->
-<!--                                          <Text fx:id="cfr_general" layoutX="22.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="JUSTIFY" wrappingWidth="525.0" />-->
-<!--                                       </children>-->
-<!--                                       <VBox.margin>-->
-<!--                                          <Insets bottom="20.0" />-->
-<!--                                       </VBox.margin>-->
-<!--                                    </Pane>-->
-<!--                                    <Label text="Thông tin chi tiết">-->
-<!--                                       <font>-->
-<!--                                          <Font name="Times New Roman Bold" size="16.0" />-->
-<!--                                       </font>-->
-<!--                                       <padding>-->
-<!--                                          <Insets left="20.0" />-->
-<!--                                       </padding>-->
-<!--                                    </Label>-->
-<!--                                    <ScrollPane hbarPolicy="NEVER" maxWidth="1.7976931348623157E308" prefHeight="365.0" prefWidth="558.0">-->
-<!--                                       <content>-->
-<!--                                          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefWidth="546.0">-->
-<!--                                             <children>-->
-<!--                                                <Text fx:id="cfr_detail" layoutY="12.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="JUSTIFY" wrappingWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0" />-->
-<!--                                             </children>-->
-<!--                                             <padding>-->
-<!--                                                <Insets top="10.0" />-->
-<!--                                             </padding>-->
-<!--                                          </AnchorPane>-->
-<!--                                       </content>-->
-<!--                                    </ScrollPane>-->
-<!--                                 </children>-->
-<!--                              </VBox>-->
-<!--                              <VBox maxHeight="458.0" maxWidth="225.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="225.0">-->
-<!--                                 <children>-->
-<!--                                    <ScrollPane hbarPolicy="NEVER" prefHeight="455.0" prefWidth="225.0">-->
-<!--                                       <content>-->
-<!--                                          <VBox fx:id="cfr_picture" prefHeight="200.0" prefWidth="100.0" />-->
-<!--                                       </content>-->
-<!--                                    </ScrollPane>-->
-<!--                                 </children></VBox>-->
-<!--                           </items>-->
-<!--                        </SplitPane>-->
-<!--                     </children>-->
-<!--                  </GridPane>-->
-<!--                  <AnchorPane fx:id="paneAddCfr" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff;">-->
-<!--                     <children>-->
-<!--                        <Pane layoutX="54.0" layoutY="14.0" prefHeight="427.0" prefWidth="857.0" style="-fx-border-color: #0B0B3B;" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="16.0">-->
-<!--                           <children>-->
-<!--                              <Label layoutX="21.0" layoutY="32.0" text="Tên hội nghị" />-->
-<!--                              <TextArea fx:id="addCfr_name" layoutX="112.0" layoutY="12.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="57.0" prefWidth="287.0" wrapText="true" />-->
-<!--                              <Label layoutX="21.0" layoutY="90.0" text="Chọn ngày" />-->
-<!--                              <DatePicker fx:id="addCfr_date" layoutX="112.0" layoutY="86.0" prefHeight="25.0" prefWidth="118.0" />-->
-<!--                              <Label layoutX="249.0" layoutY="90.0" text="Chọn giờ" />-->
-<!--                              <ComboBox fx:id="addCfr_time" layoutX="310.0" layoutY="86.0" prefHeight="25.0" prefWidth="89.0" />-->
-<!--                              <Label layoutX="21.0" layoutY="134.0" text="Địa điểm" />-->
-<!--                              <ComboBox fx:id="addCfr_place" layoutX="112.0" layoutY="130.0" prefHeight="25.0" prefWidth="287.0" />-->
-<!--                              <Label layoutX="20.0" layoutY="176.0" text="Phòng/ Sảnh" />-->
-<!--                              <ComboBox fx:id="addCfr_room" layoutX="112.0" layoutY="172.0" prefHeight="25.0" prefWidth="118.0" />-->
-<!--                              <Label layoutX="249.0" layoutY="176.0" text="Số lượng" />-->
-<!--                              <TextField fx:id="addCfr_numberAttendees" layoutX="310.0" layoutY="172.0" prefHeight="25.0" prefWidth="89.0" />-->
-<!--                              <Label layoutX="23.0" layoutY="217.0" text="Hình ảnh" />-->
-<!--                              <Button fx:id="addCfr_picture" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="112.0" layoutY="213.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #D8D8D8;" text="Chọn file (tối đa 5)" textAlignment="CENTER">-->
-<!--                                 <padding>-->
-<!--                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />-->
-<!--                                 </padding>-->
-<!--                                 <font>-->
-<!--                                    <Font size="10.0" />-->
-<!--                                 </font>-->
-<!--                              </Button>-->
-<!--                              <Label layoutX="23.0" layoutY="255.0" text="Mô tả chung" />-->
-<!--                              <TextArea fx:id="addCfr_generalDesc" layoutX="20.0" layoutY="278.0" prefHeight="133.0" prefWidth="379.0" wrapText="true" />-->
-<!--                              <Label layoutX="443.0" layoutY="14.0" text="Mô tả chi tiết" />-->
-<!--                              <TextArea fx:id="addCfr_detiailDesc" layoutX="443.0" layoutY="37.0" prefHeight="334.0" prefWidth="397.0" wrapText="true" />-->
-<!--                              <Button fx:id="btnAddCfrForm" layoutX="583.0" layoutY="379.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="118.0" text="Thêm" textFill="WHITE" />-->
-<!--                              <Line endX="-100.0" endY="425.0" layoutX="518.0" layoutY="2.0" startX="-100.0" />-->
-<!--                              <Text fx:id="numPicture" fill="#757575" layoutX="248.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đã chọn: 0 file" wrappingWidth="146.0" />-->
-<!--                           </children>-->
-<!--                        </Pane>-->
-<!--                        <Pane fx:id="paneAddCfrError" layoutX="761.0" layoutY="175.0" style="-fx-border-color: #000000; -fx-border-radius: 10;" visible="false">-->
-<!--                           <children>-->
-<!--                              <Text fx:id="addCfr_error" fill="RED" layoutX="6.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="186.78710937500006" />-->
-<!--                           </children>-->
-<!--                        </Pane>-->
-<!--                     </children>-->
-<!--                  </AnchorPane>-->
-<!--               </children>-->
             </StackPane>
          </children>
       </AnchorPane>

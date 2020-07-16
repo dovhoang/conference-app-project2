@@ -28,12 +28,12 @@
         </property>
 
         <!-- List of XML mapping files -->
-        <mapping resource = "Conference.hbm.xml"/>
-        <mapping resource = "Place.hbm.xml"/>
-        <mapping resource = "Room.hbm.xml"/>
-        <mapping resource = "User.hbm.xml"/>
-        <mapping resource = "Attends.hbm.xml"/>
-        <mapping resource = "UserType.hbm.xml"/>
+        <mapping resource = "mapping/Conference.hbm.xml"/>
+        <mapping resource = "mapping/Place.hbm.xml"/>
+        <mapping resource = "mapping/Room.hbm.xml"/>
+        <mapping resource = "mapping/User.hbm.xml"/>
+        <mapping resource = "mapping/Attends.hbm.xml"/>
+        <mapping resource = "mapping/UserType.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>

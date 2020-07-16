@@ -6,9 +6,56 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="scene.ApprovalAttends"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<GridPane fx:id="paneApproval" prefHeight="360.0" prefWidth="950.0" style="-fx-background-color: #ffff;"
+          xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="controller.ApprovalController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0">
+            <children>
+                <Button graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="94.0" style="-fx-background-color: #0B0B3B; -fx-border-radius: 20;" text="Tìm kiếm" textFill="WHITE">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </HBox.margin>
+                    <graphic>
 
-</AnchorPane>
+                    </graphic>
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                    <padding>
+                        <Insets left="10.0" right="10.0" />
+                    </padding>
+                    <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" />
+                    </graphic>
+                </Button>
+                <TextField minWidth="-Infinity" prefHeight="25.0" prefWidth="332.0">
+                    <HBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                    </HBox.margin>
+                </TextField>
+            </children>
+        </HBox>
+        <TableView fx:id="table_approval" prefHeight="410.0" prefWidth="936.0" GridPane.rowIndex="1">
+            <columns>
+                <TableColumn fx:id="approval_id" maxWidth="49.0" minWidth="49.0" prefWidth="49.0" resizable="false" text="Mã số" />
+                <TableColumn fx:id="approval_username" maxWidth="233.0" prefWidth="162.0" resizable="false" text="Username" />
+                <TableColumn fx:id="approval_name" minWidth="0.0" prefWidth="203.0" resizable="false" text="Họ và tên" />
+                <TableColumn fx:id="approval_cfr" prefWidth="313.0" resizable="false" text="Hội nghị" />
+            </columns>
+            <GridPane.margin>
+                <Insets left="20.0" right="20.0" />
+            </GridPane.margin>
+        </TableView>
+    </children>
+</GridPane>

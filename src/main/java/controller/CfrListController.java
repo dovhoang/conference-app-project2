@@ -31,17 +31,13 @@ public class CfrListController implements Initializable {
     TableColumn<ConferenceDetailDTO, String> table_info = new TableColumn<>("Conference Info");
 
 
-        void listConferenceView() {
+    void listConferenceView() {
         //Define comumn of table
         table_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         table_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         table_time.setCellValueFactory(new PropertyValueFactory<>("time"));
         table_place.setCellValueFactory(new PropertyValueFactory<>("place"));
         table_info.setCellValueFactory(new PropertyValueFactory<>("generalDesc"));
-
-        //btnList.requestFocus();
-        //cfr_id.setText("");
-        //title_name.setText(Utils.convertUTF8IntoString("DANH SÁCH HỘI NGHỊ"));
 
         //Set cell listener to show Cfr detail
         table_name.setCellFactory(tc -> {
@@ -56,8 +52,6 @@ public class CfrListController implements Initializable {
         table_info.setCellFactory(tc -> getTableCellCustom());
 
         table.setItems(ConferenceDAO.getConferencesDetail());
-        //Show left menu:  logged or not logged view
-        //showMenu();
     }
 
     @Override
