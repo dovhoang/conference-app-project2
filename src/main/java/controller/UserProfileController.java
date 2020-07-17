@@ -12,7 +12,7 @@ import utils.Utils;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserProfileController implements Initializable {
+public class UserProfileController extends Controller {
 
     @FXML
     private GridPane paneProfile;
@@ -36,10 +36,7 @@ public class UserProfileController implements Initializable {
     private Label user_name;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        profileView();
-    }
-    void profileView() {
+    public void loadView() {
         User cur = UserSession.getInstance().getUser();
         user_id.setText(Integer.toString(cur.getId()));
         user_name.setText(cur.getName());

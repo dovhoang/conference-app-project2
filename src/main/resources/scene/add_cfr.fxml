@@ -33,7 +33,7 @@
                 <ComboBox fx:id="addCfr_time" layoutX="310.0" layoutY="86.0" prefHeight="25.0" prefWidth="89.0" />
                 <Label layoutX="21.0" layoutY="134.0" text="Địa điểm" />
                 <ComboBox fx:id="addCfr_place" layoutX="112.0" layoutY="130.0" prefHeight="25.0" prefWidth="287.0" />
-                <Label layoutX="20.0" layoutY="176.0" text="Phòng/ Sảnh" />
+                <Label layoutX="22.0" layoutY="176.0" text="Phòng/ Sảnh" />
                 <ComboBox fx:id="addCfr_room" layoutX="112.0" layoutY="172.0" prefHeight="25.0" prefWidth="118.0" />
                 <Label layoutX="249.0" layoutY="176.0" text="Số lượng" />
                 <TextField fx:id="addCfr_numberAttendees" layoutX="310.0" layoutY="172.0" prefHeight="25.0" prefWidth="89.0" />
@@ -47,7 +47,7 @@
                     </font>
                 </Button>
                 <Label layoutX="23.0" layoutY="255.0" text="Mô tả chung" />
-                <TextArea fx:id="addCfr_generalDesc" layoutX="31.0" layoutY="278.0" prefHeight="121.0" prefWidth="368.0" wrapText="true" />
+                <TextArea fx:id="addCfr_generalDesc" layoutX="21.0" layoutY="278.0" prefHeight="121.0" prefWidth="378.0" wrapText="true" />
                 <Text fx:id="numPicture" fill="#757575" layoutX="248.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đã chọn: 0 file" wrappingWidth="146.0" />
             </children>
         </Pane>

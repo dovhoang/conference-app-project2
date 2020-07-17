@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class SignInController implements Initializable {
+public class SignInController extends Controller{
 
     @FXML
     private AnchorPane paneSignIn;
@@ -50,21 +50,16 @@ public class SignInController implements Initializable {
     @FXML
     private Text signInError;
 
-    StackPane stackPane;
-
-    Text helloUser;
-
-    Label titleName;
-
-    List<Button> btnMenuList = new ArrayList<>();
-
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        signInView();
+    public void addScreen(String path) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        stackPane.getChildren().add(loader.load());
+        Controller controller = loader.getController();
+        controller.getRoot(stackPane,helloUser,titleName, btnMenuList);
     }
 
-    void signInView() {
-        //titleName.setText(Utils.convertUTF8IntoString("ĐĂNG NHẬP"));
+    @Override
+    public void loadView() {
         signInUsername.clear();
         signInPassword.clear();
         btnSignInForm.setOnAction(new EventHandler<ActionEvent>() {
@@ -78,7 +73,7 @@ public class SignInController implements Initializable {
                         UserSession.getInstace(user);
                         //
                         try {
-                            stackPane.getChildren().add(FXMLLoader.load(getClass().getResource("/scene/cfr_list.fxml")));
+                            addScreen("/scene/cfr_list.fxml");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -100,6 +95,7 @@ public class SignInController implements Initializable {
         });
 
         btnSignUp.setOnAction(event -> {
+            titleName.setText(Utils.convertUTF8IntoString("ĐĂNG KÝ"));
             try {
                 addScreen("/scene/sign_up.fxml");
             } catch (IOException e) {
@@ -107,17 +103,5 @@ public class SignInController implements Initializable {
             }
         });
     }
-    public void addScreen(String path) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-        stackPane.getChildren().add(loader.load());
-        SignUpController controller = loader.getController();
-        controller.getRoot(stackPane,helloUser,titleName, btnMenuList);
-    }
 
-    public void getRoot(StackPane sp, Text helloUser,Label titleName, List<Button> btnMenuList){
-        stackPane = sp;
-        this.helloUser = helloUser;
-        this.btnMenuList = btnMenuList;
-        this.titleName = titleName;
-    }
 }

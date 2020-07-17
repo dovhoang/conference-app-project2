@@ -2,18 +2,18 @@ package controller;
 
 import global.UserSession;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import utils.Utils;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 
@@ -38,10 +38,10 @@ public class HomeController implements Initializable {
     private Button btnSignIn;
 
     @FXML
-    private Label title_name;
+    private Label titleName;
 
     @FXML
-    private Label cfr_id;
+    private Label subTitleName;
 
     @FXML
     private AnchorPane window;
@@ -66,95 +66,15 @@ public class HomeController implements Initializable {
 
     List<Button> listButtonMenu;
 
-    @FXML
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            stackPane.getChildren().add(FXMLLoader.load(getClass().getResource("/scene/cfr_list.fxml")));
+            addScreen("/scene/cfr_list.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
         buttonMenuInit();
         notLoggedMenu();
-    }
-
-    //Click button event
-    public void buttonMenuInit() {
-        btnList.setOnAction(even -> {
-            title_name.setText(Utils.convertUTF8IntoString("DANH SÁCH HỘI NGHỊ"));
-            try {
-                addScreen("/scene/cfr_list.fxml");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        });
-
-        btnProfile.setOnAction(even -> {
-            title_name.setText(Utils.convertUTF8IntoString("HỒ SƠ"));
-            try {
-                addScreen("/scene/user_profile.fxml");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        });
-
-        btnMyCfr.setOnAction(even -> {
-            title_name.setText(Utils.convertUTF8IntoString("HỘI NGHỊ CỦA TÔI"));
-            try {
-                addScreen("/scene/my_cfr.fxml");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        });
-
-        btnSignIn.setOnAction(even -> {
-            title_name.setText(Utils.convertUTF8IntoString("ĐĂNG NHẬP"));
-            try {
-                addScreen("/scene/sign_in.fxml");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        });
-
-        btnAddCfr.setOnAction(even -> {
-            title_name.setText(Utils.convertUTF8IntoString("THÊM HỘI NGHỊ"));
-            try {
-                addScreen("/scene/add_cfr.fxml");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-        btnAppvoral.setOnAction(even -> {
-            title_name.setText(Utils.convertUTF8IntoString("DUYỆT HỘI NGHỊ"));
-            try {
-                addScreen("/scene/approval_attends.fxml");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-        btnUserManager.setOnAction(even -> {
-            title_name.setText(Utils.convertUTF8IntoString("QUẢN LÍ NGƯỜI DÙNG"));
-            try {
-                addScreen("/scene/user_manager.fxml");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-        });
-
-        btnSignOut.setOnAction(even -> {
-            UserSession.cleanUserSession();
-            notLoggedMenu();
-        });
-
-        listButtonMenu = Arrays.asList(btnList, btnProfile, btnSetting, btnMyCfr, btnAddCfr, btnUserManager,
-                btnAddCfr, btnAppvoral, btnSignIn, btnSignOut);
     }
 
 //    public void updateCfrView(ConferenceDetailDTO cfr) {
@@ -230,12 +150,94 @@ public class HomeController implements Initializable {
 //        });
 //    }
 //
-
     public void addScreen(String path) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         stackPane.getChildren().add(loader.load());
-        SignInController controller = loader.getController();
-        controller.getRoot(stackPane, helloUser, title_name, listButtonMenu);
+        Controller controller = loader.getController();
+        controller.getRoot(stackPane, helloUser, titleName, listButtonMenu);
+        controller.loadView();
+        titleName.setFont(Font.font("verdana",FontWeight.BOLD,28));
+    }
+
+
+    //Click button event
+    public void buttonMenuInit() {
+        btnList.setOnAction(even -> {
+            titleName.setText(Utils.convertUTF8IntoString("DANH SÁCH HỘI NGHỊ"));
+            try {
+                addScreen("/scene/cfr_list.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        });
+
+        btnProfile.setOnAction(even -> {
+            titleName.setText(Utils.convertUTF8IntoString("HỒ SƠ"));
+            try {
+                addScreen("/scene/user_profile.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        });
+
+        btnMyCfr.setOnAction(even -> {
+            titleName.setText(Utils.convertUTF8IntoString("HỘI NGHỊ CỦA TÔI"));
+            try {
+                addScreen("/scene/my_cfr.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        });
+
+        btnSignIn.setOnAction(even -> {
+            titleName.setText(Utils.convertUTF8IntoString("ĐĂNG NHẬP"));
+            try {
+                addScreen("/scene/sign_in.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        });
+
+        btnAddCfr.setOnAction(even -> {
+            titleName.setText(Utils.convertUTF8IntoString("THÊM HỘI NGHỊ"));
+            try {
+                addScreen("/scene/add_cfr.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        btnAppvoral.setOnAction(even -> {
+            titleName.setText(Utils.convertUTF8IntoString("DUYỆT HỘI NGHỊ"));
+            try {
+                addScreen("/scene/approval_attends.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        btnUserManager.setOnAction(even -> {
+            titleName.setText(Utils.convertUTF8IntoString("QUẢN LÍ NGƯỜI DÙNG"));
+            try {
+                addScreen("/scene/user_manager.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        });
+
+        btnSignOut.setOnAction(even -> {
+            UserSession.cleanUserSession();
+            notLoggedMenu();
+        });
+
+        listButtonMenu = Arrays.asList(btnList, btnProfile, btnSetting, btnMyCfr, btnAddCfr, btnUserManager,
+                btnAddCfr, btnAppvoral, btnSignIn, btnSignOut);
     }
 
     //not logged menu view

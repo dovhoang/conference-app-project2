@@ -1,22 +1,29 @@
 package controller;
 
 import DAO.ConferenceDAO;
+import DTO.ConferenceDetailDTO;
 import DTO.MyConferencesDTO;
 import global.UserSession;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import pojo.User;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MyCfrController implements Initializable {
+public class MyCfrController extends Controller{
 
     @FXML
     private TableView<MyConferencesDTO> myCfr_table = new TableView<>();
@@ -37,7 +44,7 @@ public class MyCfrController implements Initializable {
     private TableColumn<MyConferencesDTO, String> myCfr_status = new TableColumn<>();
 
 
-    void myCfrView() {
+    public void loadView() {
         myCfr_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         myCfr_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         myCfr_time.setCellValueFactory(new PropertyValueFactory<>("time"));
@@ -57,16 +64,20 @@ public class MyCfrController implements Initializable {
             cell.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    MyConferencesDTO myConference = (MyConferencesDTO) cell.getTableRow().getItem();
-                    //CfrDetailView(ConferenceDAO.getConferenceDetailById(myConference.getId()));
+                    MyConferencesDTO myConference = cell.getTableRow().getItem();
+                    addScreen("/scene/cfr_detail.fxml",);
                 }
             });
             return cell;
         });
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        myCfrView();
+    public void addScreen(String path, ConferenceDetailDTO cfr) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        stackPane.getChildren().add(loader.load());
+        Controller controller = loader.getController();
+        controller.getRoot(stackPane,cfr);
+        controller.loadView();
     }
+
 }

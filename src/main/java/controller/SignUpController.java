@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class SignUpController implements Initializable {
+public class SignUpController extends Controller{
 
     @FXML
     private Pane paneFormSignUp;
@@ -53,21 +53,7 @@ public class SignUpController implements Initializable {
     @FXML
     private Text signUpError;
 
-    StackPane stackPane;
-
-    Text helloUser;
-
-    Label titleName;
-
-    List<Button> btnMenuList = new ArrayList<>();
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        signUpView();
-    }
-
-    void signUpView() {
+    public void loadView() {
         signUpError.setVisible(false);
         signUpError.setManaged(false);
         signUpName.clear();
@@ -89,7 +75,7 @@ public class SignUpController implements Initializable {
                             new UserType(1, "User"), true);
                     if (!UserDAO.checkExistsUsernameAndEmail(user)) {
                         try {
-                            stackPane.getChildren().add(FXMLLoader.load(getClass().getResource("/scene/cfr_list.fxml")));
+                            addScreen("/scene/cfr_list.fxml");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -107,6 +93,14 @@ public class SignUpController implements Initializable {
                 }
             }
         });
+    }
+
+    @Override
+    public void addScreen(String path) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        stackPane.getChildren().add(loader.load());
+        Controller controller = loader.getController();
+        controller.getRoot(stackPane,helloUser,titleName, btnMenuList);
     }
 
     boolean checkErrorFormSignUp() {
@@ -143,13 +137,4 @@ public class SignUpController implements Initializable {
         signUpError.setText(error);
         return flag;
     }
-
-    public void getRoot(StackPane sp, Text helloUser, Label titleName, List<Button> btnMenuList){
-        stackPane = sp;
-        this.helloUser = helloUser;
-        this.btnMenuList = btnMenuList;
-        this.titleName = titleName;
-    }
-
-
 }

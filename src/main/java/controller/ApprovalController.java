@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ApprovalController implements Initializable {
+public class ApprovalController extends Controller implements Initializable {
 
     @FXML
     private TableView<ApprovalDTO> table_approval;
@@ -67,7 +67,7 @@ public class ApprovalController implements Initializable {
                         btn.setOnAction((ActionEvent event) -> {
                             ApprovalDTO data = getTableView().getItems().get(getIndex());
                             if (showAlertConfirmAppvoral(data, 1)) {
-                                //btnAppvoral.requestFocus();
+                                pressed.requestFocus();
                                 approvalView();
                             }
                         });
@@ -78,7 +78,7 @@ public class ApprovalController implements Initializable {
                         btn2.setOnAction((ActionEvent event) -> {
                             ApprovalDTO data = getTableView().getItems().get(getIndex());
                             if (showAlertConfirmAppvoral(data, 2)) {
-                                //btnAppvoral.requestFocus();
+                                pressed.requestFocus();
                                 approvalView();
                             }
                         });

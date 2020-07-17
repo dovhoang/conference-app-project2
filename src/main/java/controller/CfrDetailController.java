@@ -7,6 +7,7 @@ import global.UserSession;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -15,6 +16,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -24,12 +26,13 @@ import pojo.User;
 import utils.Utils;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class CfrDetailController implements Initializable {
+public class CfrDetailController extends Controller {
 
     @FXML
     private GridPane paneCfr;
@@ -64,16 +67,10 @@ public class CfrDetailController implements Initializable {
     @FXML
     private VBox cfr_picture;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        //CfrDetailView();
-    }
-    void CfrDetailView(ConferenceDetailDTO cfr) {
+    @FXML
+    public void loadView(ConferenceDetailDTO cfr) {
         Conference conference = ConferenceDAO.getConferenceById(cfr.getId());
         long attendees = AttendsDAO.getNumberAttendeesForConference(conference);
-        //cfr_id.setText(Utils.convertUTF8IntoString("Danh sách hội nghị / ") + Integer.toString(cfr.getId()));
-        if (cfr.getName().length() > 50)
-            //title_name.setFont(Font.font("verdana", FontWeight.BOLD, 28.0 / cfr.getName().length() * 50));
 
         cfr_general.setText(cfr.getGeneralDesc());
         cfr_detail.setText(cfr.getDetailDesc());

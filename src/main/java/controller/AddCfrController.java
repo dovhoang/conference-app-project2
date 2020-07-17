@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AddCfrController implements Initializable {
+public class AddCfrController extends Controller {
 
     @FXML
     private GridPane paneAddCfr;
@@ -86,12 +86,7 @@ public class AddCfrController implements Initializable {
 
     List<File> fileList = new ArrayList<>();
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        addCfrView();
-    }
-
-    public boolean addCfrView() {
+    public void loadView() {
         addCfr_name.clear();
         addCfr_generalDesc.clear();
         addCfr_detiailDesc.clear();
@@ -118,7 +113,8 @@ public class AddCfrController implements Initializable {
             i++;
         }
         addCfr_time.setItems(timeOptions);
-        addCfr_time.setConverter(new StringConverter<>() {
+        addCfr_time.getSelectionModel().select(0);
+        addCfr_time.setConverter(new StringConverter<LocalTime>() {
             @Override
             public String toString(LocalTime object) {
                 return object.toString();
@@ -141,6 +137,7 @@ public class AddCfrController implements Initializable {
         //get room and place
         ObservableList<Place> placeOptions = PlaceDAO.getPlacesList();
         addCfr_place.setItems(placeOptions);
+        addCfr_place.getSelectionModel().select(0);
         addCfr_place.setConverter(new StringConverter<Place>() {
             @Override
             public String toString(Place object) {
@@ -156,8 +153,10 @@ public class AddCfrController implements Initializable {
 
         addCfr_place.valueProperty().addListener(new ChangeListener<Place>() {
             @Override
-            public void changed(ObservableValue<? extends Place> observable, Place oldValue, Place newValue) {
+            public void changed(ObservableValue<? extends Place> observable, Place oldValue,
+                                Place newValue) {
                 ObservableList<Room> roomOptions = RoomDAO.getRoomsListByPlace(newValue);
+                addCfr_room.getSelectionModel().select(0);
                 addCfr_room.setItems(roomOptions);
                 addCfr_room.setConverter(new StringConverter<Room>() {
                     @Override
@@ -171,12 +170,7 @@ public class AddCfrController implements Initializable {
                                 ap.getName().equals(string)).findFirst().orElse(null);
                     }
                 });
-                addCfr_room.valueProperty().addListener(new ChangeListener<Room>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Room> observable, Room oldValue, Room newValue) {
-                        room[0] = newValue;
-                    }
-                });
+                addCfr_room.valueProperty().addListener((observable1, oldValue1, newValue1) -> room[0] = newValue1);
             }
         });
 
@@ -230,12 +224,10 @@ public class AddCfrController implements Initializable {
                         e.printStackTrace();
                     }
                     paneAddCfrError.setVisible(false);
-                    //btnList.requestFocus();
-                    //listConferenceView();
+
                 } else paneAddCfrError.setVisible(true);
             }
         });
-        return false;
     }
 
     public void chooseCfrPicture() {
@@ -280,7 +272,6 @@ public class AddCfrController implements Initializable {
             i++;
         }
     }
-
 
 
 }

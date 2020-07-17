@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class UserManagerController implements Initializable {
+public class UserManagerController extends Controller {
 
     @FXML
     private TableView<UserDTO> table_userManager;
@@ -38,13 +38,9 @@ public class UserManagerController implements Initializable {
     private TableColumn<UserDTO, String> userManager_status;
 
     boolean flag = true;
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        userManagerView();
-    }
 
-    public void userManagerView() {
-        //title_name.setText(Utils.convertUTF8IntoString("QUẢN LÍ NGƯỜI DÙNG"));
+    @Override
+    public void loadView() {
         userManager_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         userManager_username.setCellValueFactory(new PropertyValueFactory<>("username"));
         userManager_name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -71,7 +67,7 @@ public class UserManagerController implements Initializable {
                         btn.setOnAction((ActionEvent event) -> {
                             UserDTO data = getTableView().getItems().get(getIndex());
                             showAlertConfirmActiveOrBanUser(data);
-                            userManagerView();
+                            loadView();
                         });
                     }
 

@@ -3,19 +3,23 @@ package controller;
 import DAO.ConferenceDAO;
 import DTO.ConferenceDetailDTO;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import utils.Utils;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import static utils.Utils.getTableCellCustom;
 
-public class CfrListController implements Initializable {
+public class CfrListController extends Controller{
 
     @FXML
     TableView<ConferenceDetailDTO> table = new TableView<>();
@@ -30,8 +34,8 @@ public class CfrListController implements Initializable {
     @FXML
     TableColumn<ConferenceDetailDTO, String> table_info = new TableColumn<>("Conference Info");
 
-
-    void listConferenceView() {
+    @Override
+    public void loadView() {
         //Define comumn of table
         table_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         table_name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -44,7 +48,15 @@ public class CfrListController implements Initializable {
             TableCell<ConferenceDetailDTO, String> cell = getTableCellCustom();
             cell.setOnMouseClicked(event -> {
                 ConferenceDetailDTO conference = cell.getTableRow().getItem();
-                //CfrDetailView(conference);
+                titleName.setText(conference.getName());
+                try {
+                    addScreen("/scene/cfr_detail.fxml", conference);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if (conference.getName().length() > 50) {
+                    titleName.setFont(Font.font("verdana", FontWeight.BOLD, 28.0 / conference.getName().length() * 50));
+                }
             });
             return cell;
         });
@@ -54,8 +66,11 @@ public class CfrListController implements Initializable {
         table.setItems(ConferenceDAO.getConferencesDetail());
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        listConferenceView();
+    public void addScreen(String path, ConferenceDetailDTO cfr) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        stackPane.getChildren().add(loader.load());
+        CfrDetailController controller = loader.getController();
+        controller.getRoot(stackPane, cfr);
+        controller.loadView(cfr);
     }
 }
