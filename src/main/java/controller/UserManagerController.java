@@ -51,7 +51,7 @@ public class UserManagerController extends Controller {
 
     }
 
-        private boolean addButtonActiveUser() {
+    private boolean addButtonActiveUser() {
         TableColumn<UserDTO, Void> colBtn = new TableColumn(Utils.convertUTF8IntoString("Hành động"));
 
         Callback<TableColumn<UserDTO, Void>, TableCell<UserDTO, Void>> cellFactory = new Callback<>() {

@@ -3,6 +3,7 @@ package controller;
 import DAO.ConferenceDAO;
 import DAO.PlaceDAO;
 import DAO.RoomDAO;
+import DTO.MyConferencesDTO;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -11,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -218,12 +220,13 @@ public class AddCfrController extends Controller {
                 if (flag) {
                     Conference cfr = new Conference(id, name, room[0], generalDesc, detailDesc, datetime, numberAttendees);
                     ConferenceDAO.insertConference(cfr);
+                    paneAddCfrError.setVisible(false);
                     try {
+                        addScreen("scene/cfr_list.fxml");
                         fileSaved(fileList, id);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    paneAddCfrError.setVisible(false);
 
                 } else paneAddCfrError.setVisible(true);
             }
@@ -273,5 +276,12 @@ public class AddCfrController extends Controller {
         }
     }
 
+    public void addScreen(String path) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        stackPane.getChildren().add(loader.load());
+        Controller controller = loader.getController();
+        controller.getRoot(stackPane);
+        controller.loadView();
+    }
 
 }

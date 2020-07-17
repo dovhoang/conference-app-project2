@@ -1,6 +1,7 @@
 package controller;
 
 import DTO.ConferenceDetailDTO;
+import DTO.MyConferencesDTO;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,6 +24,8 @@ public class Controller {
 
     ConferenceDetailDTO cfr;
 
+    MyConferencesDTO myCfr;
+
     Button pressed;
     public void getRoot(StackPane stackPane, Text helloUser, Label titleName, List<Button> btnMenuList){
         this.stackPane = stackPane;
@@ -34,6 +37,10 @@ public class Controller {
     public void getRoot(StackPane stackPane,ConferenceDetailDTO cfr){
         this.stackPane = stackPane;
         this.cfr = cfr;
+    }
+    public void getRoot(StackPane stackPane, MyConferencesDTO myCfr){
+        this.stackPane = stackPane;
+        this.myCfr = myCfr;
     }
 
     public void getRoot(StackPane stackPane){

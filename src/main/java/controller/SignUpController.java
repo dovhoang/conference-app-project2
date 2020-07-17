@@ -95,12 +95,11 @@ public class SignUpController extends Controller{
         });
     }
 
-    @Override
     public void addScreen(String path) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         stackPane.getChildren().add(loader.load());
         Controller controller = loader.getController();
-        controller.getRoot(stackPane,helloUser,titleName, btnMenuList);
+        controller.loadView();
     }
 
     boolean checkErrorFormSignUp() {

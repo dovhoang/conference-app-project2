@@ -115,4 +115,20 @@ public class ConferenceDAO {
             session.getTransaction().rollback();
         }
     }
+
+    public static List<Conference> searchConference(String keyword){
+        SessionFactory factory = HibernateUtils.getSessionFactory();
+        Session session = factory.openSession();
+        List<Conference> list = new ArrayList<>();
+        try {
+            session.getTransaction().begin();
+            String hql = "select c from Conference c where c.name = '"+keyword+"'";
+            Query<Conference> query = session.createQuery(hql);
+            list = query.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        return list;
+    }
 }

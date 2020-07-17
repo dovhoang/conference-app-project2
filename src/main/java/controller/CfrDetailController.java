@@ -128,11 +128,23 @@ public class CfrDetailController extends Controller {
         btnEditCfr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //updateCfrView(cfr);
+                try {
+                    addScreen("/scene/add_cfr.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
 
+    }
+
+    public void addScreen(String path) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        stackPane.getChildren().add(loader.load());
+        Controller controller = loader.getController();
+        controller.getRoot(stackPane);
+        controller.loadView();
     }
 
     private void showAlertConfirmConference(Conference conference) {

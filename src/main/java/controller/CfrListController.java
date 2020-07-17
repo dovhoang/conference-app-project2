@@ -64,6 +64,8 @@ public class CfrListController extends Controller{
         table_info.setCellFactory(tc -> getTableCellCustom());
 
         table.setItems(ConferenceDAO.getConferencesDetail());
+
+
     }
 
     public void addScreen(String path, ConferenceDetailDTO cfr) throws IOException {

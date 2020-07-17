@@ -65,18 +65,22 @@ public class MyCfrController extends Controller{
                 @Override
                 public void handle(MouseEvent event) {
                     MyConferencesDTO myConference = cell.getTableRow().getItem();
-                    addScreen("/scene/cfr_detail.fxml",);
+                    try {
+                        addScreen("/scene/cfr_detail.fxml",myConference);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
             return cell;
         });
     }
 
-    public void addScreen(String path, ConferenceDetailDTO cfr) throws IOException {
+    public void addScreen(String path, MyConferencesDTO myCfr) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         stackPane.getChildren().add(loader.load());
         Controller controller = loader.getController();
-        controller.getRoot(stackPane,cfr);
+        controller.getRoot(stackPane,myCfr);
         controller.loadView();
     }
 
