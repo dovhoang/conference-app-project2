@@ -67,11 +67,11 @@ public class CfrDetailController extends Controller {
     @FXML
     private VBox cfr_picture;
 
+
     @FXML
     public void loadView(ConferenceDetailDTO cfr) {
         Conference conference = ConferenceDAO.getConferenceById(cfr.getId());
         long attendees = AttendsDAO.getNumberAttendeesForConference(conference);
-
         cfr_general.setText(cfr.getGeneralDesc());
         cfr_detail.setText(cfr.getDetailDesc());
         cfr_time.setText(cfr.getTime());
@@ -125,11 +125,19 @@ public class CfrDetailController extends Controller {
             }
         });
 
+        btnEditCfr.setVisible(false);
+        btnEditCfr.setManaged(false);
+        if (UserSession.getInstance() != null) {
+            if (UserSession.getInstance().getUser().getType().getName().equals("Admin")) {
+                btnEditCfr.setVisible(true);
+                btnEditCfr.setManaged(true);
+            }
+        }
         btnEditCfr.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    addScreen("/scene/add_cfr.fxml");
+                    addScreen("/scene/update_cfr.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -143,8 +151,8 @@ public class CfrDetailController extends Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         stackPane.getChildren().add(loader.load());
         Controller controller = loader.getController();
-        controller.getRoot(stackPane);
-        controller.loadView();
+        controller.getRoot(stackPane, cfr,titleName);
+        controller.loadView(cfr);
     }
 
     private void showAlertConfirmConference(Conference conference) {

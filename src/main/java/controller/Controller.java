@@ -34,9 +34,10 @@ public class Controller {
         this.titleName = titleName;
     }
 
-    public void getRoot(StackPane stackPane,ConferenceDetailDTO cfr){
+    public void getRoot(StackPane stackPane,ConferenceDetailDTO cfr,Label titleName){
         this.stackPane = stackPane;
         this.cfr = cfr;
+        this.titleName = titleName;
     }
     public void getRoot(StackPane stackPane, MyConferencesDTO myCfr){
         this.stackPane = stackPane;

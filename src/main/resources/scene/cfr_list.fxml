@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="paneList" prefHeight="360.0" prefWidth="950.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CfrListController">
+<GridPane fx:id="paneList" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CfrListController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
         <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0">
@@ -43,7 +43,7 @@
                 </TextField>
             </children>
         </HBox>
-        <TableView fx:id="table" prefHeight="410.0" prefWidth="936.0" GridPane.rowIndex="1">
+        <TableView fx:id="table" GridPane.rowIndex="1">
             <columns>
                 <TableColumn fx:id="table_id" maxWidth="49.0" minWidth="49.0" prefWidth="49.0" resizable="false" text="Mã số" />
                 <TableColumn fx:id="table_name" maxWidth="233.0" prefWidth="197.0" resizable="false" text="Hội nghị" />

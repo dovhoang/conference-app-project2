@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.geometry.Insets?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.control.ProgressBar?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<GridPane fx:id="paneCfr" prefHeight="360.0" prefWidth="950.0" style="-fx-background-color: #ffff;"
-          xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="controller.CfrDetailController">
+<GridPane fx:id="paneCfr" prefHeight="0.0" prefWidth="751.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CfrDetailController">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
+        <ColumnConstraints hgrow="SOMETIMES" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints minHeight="-Infinity" prefHeight="450.0" vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <SplitPane dividerPositions="0.1877637130801688, 0.7679324894514767">
+        <SplitPane dividerPositions="0.1877637130801688, 0.7679324894514767" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="751.0">
             <items>
-                <VBox maxWidth="170.0" prefHeight="458.0" prefWidth="170.0">
+                <VBox prefWidth="170.0">
                     <children>
                         <Label prefHeight="42.0" prefWidth="174.0" text="Thời gian" textFill="#642efe" wrapText="true">
                             <graphic>
@@ -105,7 +103,7 @@
                         </Button>
                         <Button fx:id="btnEditCfr" mnemonicParsing="false" prefHeight="33.0" prefWidth="133.0" style="-fx-background-color: #ff0000;" text="Chỉnh sửa" textFill="WHITE">
                             <VBox.margin>
-                                <Insets left="20.0" top="10.0" />
+                                <Insets bottom="20.0" left="20.0" top="10.0" />
                             </VBox.margin>
                         </Button>
                     </children>
@@ -150,7 +148,7 @@
                         </ScrollPane>
                     </children>
                 </VBox>
-                <VBox maxHeight="458.0" maxWidth="225.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="225.0">
+                <VBox>
                     <children>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="455.0" prefWidth="225.0">
                             <content>

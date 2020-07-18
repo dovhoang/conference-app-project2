@@ -72,7 +72,7 @@ public class CfrListController extends Controller{
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         stackPane.getChildren().add(loader.load());
         CfrDetailController controller = loader.getController();
-        controller.getRoot(stackPane, cfr);
+        controller.getRoot(stackPane, cfr,titleName);
         controller.loadView(cfr);
     }
 }

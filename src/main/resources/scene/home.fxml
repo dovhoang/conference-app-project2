@@ -164,7 +164,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </VBox>
-      <AnchorPane layoutX="229.0" layoutY="31.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="569.0" prefWidth="970.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
+      <AnchorPane layoutX="229.0" layoutY="31.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="552.0" prefWidth="970.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
          <children>
             <Pane fx:id="paneTitle" maxWidth="-Infinity" prefHeight="109.0" prefWidth="969.0" style="-fx-background-color: #642EFE;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
@@ -183,7 +183,7 @@
                   </AnchorPane>
                </children>
             </Pane>
-            <StackPane fx:id="stackPane" layoutY="109.0" maxHeight="1.7976931348623157E308" prefHeight="433.0" prefWidth="970.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
+            <StackPane fx:id="stackPane" layoutY="108.0" maxHeight="1.7976931348623157E308" prefHeight="446.0" prefWidth="970.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="108.0">
 <!--               <children>-->
 
 

@@ -235,26 +235,23 @@ public class AddCfrController extends Controller {
 
     public void chooseCfrPicture() {
         final boolean t  = true;
-        addCfr_picture.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                FileChooser file = new FileChooser();
-                List<String> lstFile = new ArrayList<>();
-                lstFile.add("*.png");
-                lstFile.add("*.jpg");
-                file.getExtensionFilters().add(new FileChooser.ExtensionFilter("picture file", lstFile));
-                List<File> fl = file.showOpenMultipleDialog(null);
-                while (fl.size() > 5) {
-                    fl.remove(fl.size() - 1);
-                }
-                numPicture.setText(Utils.convertUTF8IntoString("Đã chọn: ")
-                        + fl.size() + " file");
-                fileList = fl;
+        addCfr_picture.setOnAction(event -> {
+            FileChooser file = new FileChooser();
+            List<String> lstFile = new ArrayList<>();
+            lstFile.add("*.png");
+            lstFile.add("*.jpg");
+            file.getExtensionFilters().add(new FileChooser.ExtensionFilter("picture file", lstFile));
+            List<File> fl = file.showOpenMultipleDialog(null);
+            while (fl.size() > 5) {
+                fl.remove(fl.size() - 1);
             }
+            numPicture.setText(Utils.convertUTF8IntoString("Đã chọn: ")
+                    + fl.size() + " file");
+            fileList = fl;
         });
     }
 
-    public void fileSaved(List<File> fileList, int id) throws IOException {
+    public static void fileSaved(List<File> fileList, int id) throws IOException {
         String spath = "src/main/resources/picture/" + id + "/";
         File file = new File(spath);
         Path path = Paths.get(file.getAbsolutePath());

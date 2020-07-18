@@ -14,10 +14,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane fx:id="paneAddCfr" alignment="CENTER" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddCfrController">
+<GridPane fx:id="panUpdateCfr" alignment="CENTER" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateCfrController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+    <ColumnConstraints hgrow="SOMETIMES" />
+    <ColumnConstraints hgrow="SOMETIMES" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
@@ -26,19 +26,19 @@
         <Pane>
             <children>
                 <Label layoutX="21.0" layoutY="32.0" text="Tên hội nghị" />
-                <TextArea fx:id="addCfr_name" layoutX="112.0" layoutY="12.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="57.0" prefWidth="287.0" wrapText="true" />
+                <TextArea fx:id="updateCfr_name" layoutX="112.0" layoutY="12.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="57.0" prefWidth="287.0" wrapText="true" />
                 <Label layoutX="21.0" layoutY="90.0" text="Chọn ngày" />
-                <DatePicker fx:id="addCfr_date" layoutX="112.0" layoutY="86.0" prefHeight="25.0" prefWidth="118.0" />
+                <DatePicker fx:id="updateCfr_date" layoutX="112.0" layoutY="86.0" prefHeight="25.0" prefWidth="118.0" />
                 <Label layoutX="249.0" layoutY="90.0" text="Chọn giờ" />
-                <ComboBox fx:id="addCfr_time" layoutX="310.0" layoutY="86.0" prefHeight="25.0" prefWidth="89.0" />
+                <ComboBox fx:id="updateCfr_time" layoutX="310.0" layoutY="86.0" prefHeight="25.0" prefWidth="89.0" />
                 <Label layoutX="21.0" layoutY="134.0" text="Địa điểm" />
-                <ComboBox fx:id="addCfr_place" layoutX="112.0" layoutY="130.0" prefHeight="25.0" prefWidth="287.0" />
+                <ComboBox fx:id="updateCfr_place" layoutX="112.0" layoutY="130.0" prefHeight="25.0" prefWidth="287.0" />
                 <Label layoutX="22.0" layoutY="176.0" text="Phòng/ Sảnh" />
-                <ComboBox fx:id="addCfr_room" layoutX="112.0" layoutY="172.0" prefHeight="25.0" prefWidth="118.0" />
+                <ComboBox fx:id="updateCfr_room" layoutX="112.0" layoutY="172.0" prefHeight="25.0" prefWidth="118.0" />
                 <Label layoutX="249.0" layoutY="176.0" text="Số lượng" />
-                <TextField fx:id="addCfr_numberAttendees" layoutX="310.0" layoutY="172.0" prefHeight="25.0" prefWidth="89.0" />
+                <TextField fx:id="updateCfr_numberAttendees" layoutX="310.0" layoutY="172.0" prefHeight="25.0" prefWidth="89.0" />
                 <Label layoutX="23.0" layoutY="217.0" text="Hình ảnh" />
-                <Button fx:id="addCfr_picture" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="112.0" layoutY="213.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #D8D8D8;" text="Chọn file (tối đa 5)" textAlignment="CENTER">
+                <Button fx:id="updateCfr_picture" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="112.0" layoutY="213.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #D8D8D8;" text="Chọn file (tối đa 5)" textAlignment="CENTER">
                     <padding>
                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                     </padding>
@@ -47,15 +47,15 @@
                     </font>
                 </Button>
                 <Label layoutX="23.0" layoutY="255.0" text="Mô tả chung" />
-                <TextArea fx:id="addCfr_generalDesc" layoutX="21.0" layoutY="278.0" prefHeight="121.0" prefWidth="378.0" wrapText="true" />
+                <TextArea fx:id="updateCfr_generalDesc" layoutX="21.0" layoutY="278.0" prefHeight="121.0" prefWidth="378.0" wrapText="true" />
                 <Text fx:id="numPicture" fill="#757575" layoutX="248.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đã chọn: 0 file" wrappingWidth="146.0" />
             </children>
         </Pane>
       <Pane prefHeight="419.0" prefWidth="519.0" GridPane.columnIndex="1">
          <children>
                 <Label layoutX="18.0" layoutY="22.0" text="Mô tả chi tiết" />
-                <TextArea fx:id="addCfr_detiailDesc" layoutX="18.0" layoutY="51.0" prefHeight="311.0" prefWidth="486.0" wrapText="true" />
-                <Button fx:id="btnAddCfrForm" layoutX="202.0" layoutY="373.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="118.0" text="Thêm" textFill="WHITE" />
+                <TextArea fx:id="updateCfr_detailDesc" layoutX="18.0" layoutY="51.0" prefHeight="311.0" prefWidth="486.0" wrapText="true" />
+                <Button fx:id="btnUpdateCfrForm" layoutX="202.0" layoutY="373.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="118.0" text="Cập nhật" textFill="WHITE" />
          </children>
       </Pane>
    </children>

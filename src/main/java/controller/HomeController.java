@@ -77,79 +77,7 @@ public class HomeController implements Initializable {
         notLoggedMenu();
     }
 
-//    public void updateCfrView(ConferenceDetailDTO cfr) {
-//        if(flag3) flag3 = addCfrView();
-//        paneAddCfr.toFront();
-//        Conference conference = ConferenceDAO.getConferenceById(cfr.getId());
-//        title_name.setText(Utils.convertUTF8IntoString("CẬP NHẬT HỘI NGHỊ"));
-//        addCfr_name.setText(cfr.getName());
-//        addCfr_date.setValue(conference.getTime().toLocalDateTime().toLocalDate());
-//        addCfr_time.setValue(conference.getTime().toLocalDateTime().toLocalTime());
-//        addCfr_place.setValue(conference.getRoom().getPlace());
-//        addCfr_room.setValue(conference.getRoom());
-//        addCfr_numberAttendees.setText(Integer.toString(cfr.getMaxNumberAttendees()));
-//        addCfr_generalDesc.setText(cfr.getGeneralDesc());
-//        addCfr_detiailDesc.setText(cfr.getDetailDesc());
-//
-//        String spath = "src/main/resources/picture/" + cfr.getId() + "/";
-//        File file = new File(spath);
-//        numPicture.setText(Utils.convertUTF8IntoString("Đã chọn: " +
-//                file.listFiles().length) + " file");
-//        chooseCfrPicture();
-//        btnAddCfrForm.setText(Utils.convertUTF8IntoString("Cập nhật"));
-//        btnAddCfrForm.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//                String error = Utils.convertUTF8IntoString("Lỗi:");
-//                boolean flag = true;
-//                int numberAttendees = 0;
-//                Timestamp datetime = null;
-//                String name = addCfr_name.getText();
-//                String generalDesc = addCfr_generalDesc.getText();
-//                String detailDesc = addCfr_detiailDesc.getText();
-//                LocalDate date = addCfr_date.getValue();
-//                LocalTime time = addCfr_time.getValue();
-//                Room room = addCfr_room.getValue();
-//                Place place = addCfr_place.getValue();
-//                datetime = Timestamp.valueOf(LocalDateTime.of(date, time));
-//                try {
-//                    numberAttendees = Integer.parseInt(addCfr_numberAttendees.getText());
-//                    if (numberAttendees < 10) {
-//                        error = error.concat(Utils.convertUTF8IntoString("\nSố người tham gia tối tiêu là 10"));
-//                        flag = false;
-//                    }
-//                    if (numberAttendees > room.getCapacity()) {
-//                        error = error.concat(Utils.convertUTF8IntoString("\nSố người tham gia tối đa là ")
-//                                + room.getCapacity());
-//                        flag = false;
-//                    }
-//                } catch (NumberFormatException e) {
-//                    error = error.concat(Utils.convertUTF8IntoString("\nSố người tham dự nhập sai định dạng"));
-//                    flag = false;
-//                }
-//                if (name.equals("") || generalDesc.equals("") ||
-//                        detailDesc.equals("")) {
-//                    error = error.concat(Utils.convertUTF8IntoString("\nCác trường không được để trống"));
-//                    flag = false;
-//                }
-//                addCfr_error.setText(error);
-//                if (flag) {
-//                    Conference newcfr = new Conference(cfr.getId(), name, room, generalDesc, detailDesc, datetime, numberAttendees);
-//                    ConferenceDAO.updateConference(newcfr);
-//                    CfrDetailView(cfr);
-//                    try {
-//                        fileSaved(fileList, cfr.getId());
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                    paneAddCfrError.setVisible(false);
-//                    btnList.requestFocus();
-//                    listConferenceView();
-//                } else paneAddCfrError.setVisible(true);
-//            }
-//        });
-//    }
-//
+
     public void addScreen(String path) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         stackPane.getChildren().add(loader.load());
@@ -234,6 +162,11 @@ public class HomeController implements Initializable {
         btnSignOut.setOnAction(even -> {
             UserSession.cleanUserSession();
             notLoggedMenu();
+            try {
+                addScreen("scene/cfr_list.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
         listButtonMenu = Arrays.asList(btnList, btnProfile, btnSetting, btnMyCfr, btnAddCfr, btnUserManager,
@@ -264,12 +197,8 @@ public class HomeController implements Initializable {
         btnAppvoral.setVisible(false);
         btnAppvoral.setManaged(false);
 
-//        btnEditCfr.setVisible(false);
-//        btnEditCfr.setManaged(false);
-
         helloUser.setText("");
 
         btnList.requestFocus();
-        //paneList.toFront();
     }
 }
