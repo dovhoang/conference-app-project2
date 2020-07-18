@@ -116,19 +116,31 @@ public class ConferenceDAO {
         }
     }
 
-    public static List<Conference> searchConference(String keyword){
+    public static ObservableList<ConferenceDetailDTO> searchConference(String keyword){
         SessionFactory factory = HibernateUtils.getSessionFactory();
         Session session = factory.openSession();
         List<Conference> list = new ArrayList<>();
+        List<ConferenceDetailDTO> cfrFullList = new ArrayList<>();
+        int id=0;
+        try{
+            id = Integer.parseInt(keyword);
+        }catch (NumberFormatException e){
+            e.printStackTrace();
+        }
         try {
             session.getTransaction().begin();
-            String hql = "select c from Conference c where c.name = '"+keyword+"'";
+            String hql = "select c from Conference c where c.name like '%"+keyword+"%' or c.id = "+id;
             Query<Conference> query = session.createQuery(hql);
             list = query.list();
+            for(Conference i :list){
+                cfrFullList.add(i.getConferenceDetail());
+            }
+            return FXCollections.observableArrayList(cfrFullList);
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
+            return null;
         }
-        return list;
+
     }
 }

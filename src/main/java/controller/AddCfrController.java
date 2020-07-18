@@ -128,7 +128,6 @@ public class AddCfrController extends Controller {
                         ap.toString().equals(string)).findFirst().orElse(null);
             }
         });
-
         addCfr_time.valueProperty().addListener(new ChangeListener<LocalTime>() {
             @Override
             public void changed(ObservableValue<? extends LocalTime> observable, LocalTime oldValue, LocalTime newValue) {
@@ -158,8 +157,8 @@ public class AddCfrController extends Controller {
             public void changed(ObservableValue<? extends Place> observable, Place oldValue,
                                 Place newValue) {
                 ObservableList<Room> roomOptions = RoomDAO.getRoomsListByPlace(newValue);
-                addCfr_room.getSelectionModel().select(0);
                 addCfr_room.setItems(roomOptions);
+                addCfr_room.getSelectionModel().select(0);
                 addCfr_room.setConverter(new StringConverter<Room>() {
                     @Override
                     public String toString(Room object) {

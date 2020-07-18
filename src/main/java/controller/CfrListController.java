@@ -5,9 +5,7 @@ import DTO.ConferenceDetailDTO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -33,6 +31,10 @@ public class CfrListController extends Controller{
     TableColumn<ConferenceDetailDTO, String> table_place = new TableColumn<>("Conference Address");
     @FXML
     TableColumn<ConferenceDetailDTO, String> table_info = new TableColumn<>("Conference Info");
+    @FXML
+    private Button btnSearch;
+    @FXML
+    private TextField searchField;
 
     @Override
     public void loadView() {
@@ -62,9 +64,10 @@ public class CfrListController extends Controller{
         });
         table_place.setCellFactory(tc -> getTableCellCustom());
         table_info.setCellFactory(tc -> getTableCellCustom());
-
         table.setItems(ConferenceDAO.getConferencesDetail());
-
+        btnSearch.setOnAction(event -> {
+            table.setItems(ConferenceDAO.searchConference(searchField.getText()));
+        });
 
     }
 
