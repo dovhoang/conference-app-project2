@@ -68,7 +68,7 @@ public class Attends {
             else status = Utils.convertUTF8IntoString("Đã tham gia");
         }else if (approval==0) status = Utils.convertUTF8IntoString("Đang chờ duyệt");
         else status = Utils.convertUTF8IntoString("Từ chối");
-        return new MyConferencesDTO(id,conference.getName(),
+        return new MyConferencesDTO(id,conference.getId(),conference.getName(),
                 time,place,status);
 
     }

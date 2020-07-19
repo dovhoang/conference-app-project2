@@ -24,8 +24,6 @@ public class Controller {
 
     ConferenceDetailDTO cfr;
 
-    MyConferencesDTO myCfr;
-
     Button pressed;
     public void getRoot(StackPane stackPane, Text helloUser, Label titleName, List<Button> btnMenuList){
         this.stackPane = stackPane;
@@ -39,9 +37,9 @@ public class Controller {
         this.cfr = cfr;
         this.titleName = titleName;
     }
-    public void getRoot(StackPane stackPane, MyConferencesDTO myCfr){
+    public void getRoot(StackPane stackPane, ConferenceDetailDTO cfr){
         this.stackPane = stackPane;
-        this.myCfr = myCfr;
+        this.cfr = cfr;
     }
 
     public void getRoot(StackPane stackPane){

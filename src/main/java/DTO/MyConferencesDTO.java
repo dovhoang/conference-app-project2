@@ -13,6 +13,7 @@ import java.util.List;
 
 public class MyConferencesDTO {
     private int id;
+    private int conferenceId;
     private String name;
     private String time;
     private String address;
@@ -20,13 +21,15 @@ public class MyConferencesDTO {
 
     public MyConferencesDTO(){};
 
-    public MyConferencesDTO(int id, String name, String time, String address, String status) {
+    public MyConferencesDTO(int id,int conferenceId, String name, String time, String address, String status) {
         this.id = id;
+        this.conferenceId = conferenceId;
         this.name = name;
         this.time = time;
         this.address = address;
         this.status = status;
     }
+
 
     public int getId() {
         return id;
@@ -34,6 +37,14 @@ public class MyConferencesDTO {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getConferenceId() {
+        return conferenceId;
+    }
+
+    public void setConferenceId(int conferenceId) {
+        this.conferenceId = conferenceId;
     }
 
     public String getName() {

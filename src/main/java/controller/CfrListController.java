@@ -2,13 +2,18 @@ package controller;
 
 import DAO.ConferenceDAO;
 import DTO.ConferenceDetailDTO;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import utils.Utils;
 
 import java.io.IOException;
@@ -35,6 +40,10 @@ public class CfrListController extends Controller{
     private Button btnSearch;
     @FXML
     private TextField searchField;
+
+    @FXML
+    private Text numSearchResult;
+
 
     @Override
     public void loadView() {
@@ -65,10 +74,26 @@ public class CfrListController extends Controller{
         table_place.setCellFactory(tc -> getTableCellCustom());
         table_info.setCellFactory(tc -> getTableCellCustom());
         table.setItems(ConferenceDAO.getConferencesDetail());
+        numSearchResult.setVisible(false);
+        numSearchResult.setManaged(false);
         btnSearch.setOnAction(event -> {
-            table.setItems(ConferenceDAO.searchConference(searchField.getText()));
+            searchConference();
         });
 
+        searchField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER){
+                searchConference();
+            }
+        });
+
+    }
+
+    void searchConference(){
+        numSearchResult.setVisible(true);
+        numSearchResult.setManaged(true);
+        ObservableList<ConferenceDetailDTO> listSearch = ConferenceDAO.searchConference(searchField.getText());
+        numSearchResult.setText(Utils.convertUTF8IntoString("Tìm thấy "+ listSearch.size()+ " kết quả"));
+        table.setItems(listSearch);
     }
 
     public void addScreen(String path, ConferenceDetailDTO cfr) throws IOException {

@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
 
 <GridPane fx:id="paneMyCfr" prefHeight="360.0" prefWidth="950.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyCfrController">
     <columnConstraints>
@@ -21,7 +22,7 @@
     <children>
         <HBox alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="200.0">
             <children>
-                <Button graphicTextGap="10.0" mnemonicParsing="false" style="-fx-border-radius: 20;" text="Tìm kiếm" textFill="WHITE">
+                <Button fx:id="btnSearch" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="89.0" style="-fx-border-radius: 20;" text="Tìm kiếm" textFill="WHITE">
                     <graphic>
 
                     </graphic>
@@ -29,16 +30,21 @@
                         <Insets left="20.0" right="20.0" />
                     </padding>
                     <HBox.margin>
-                        <Insets left="20.0" right="20.0" />
+                        <Insets left="20.0" right="10.0" />
                     </HBox.margin>
                 </Button>
-                <TextField prefHeight="26.0" prefWidth="321.0" />
+                <TextField fx:id="searchField" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="264.0">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin></TextField>
+            <Text fx:id="numSearchResult" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="208.13671875" />
             </children>
         </HBox>
         <TableView fx:id="myCfr_table" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
             <columns>
-                <TableColumn fx:id="myCfr_id" prefWidth="75.0" text="Mã số" />
-                <TableColumn fx:id="myCfr_name" prefWidth="257.0000305175781" text="Tên hội nghị" />
+                <TableColumn fx:id="myCfr_id" prefWidth="51.0" text="Mã số" />
+            <TableColumn fx:id="myCfr_id1" prefWidth="103.0" text="Mã số hội nghị" />
+                <TableColumn fx:id="myCfr_name" prefWidth="254.0" text="Tên hội nghị" />
                 <TableColumn fx:id="myCfr_time" minWidth="0.0" prefWidth="152.0" text="Thời gian" />
                 <TableColumn fx:id="myCfr_address" prefWidth="298.0" text="Địa điểm" />
                 <TableColumn fx:id="myCfr_status" minWidth="0.0" prefWidth="165.0" text="Trạng thái" />

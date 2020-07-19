@@ -2,6 +2,8 @@ package DAO;
 
 import DTO.ApprovalDTO;
 import DTO.ConferenceDetailDTO;
+import DTO.MyConferencesDTO;
+import global.UserSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;

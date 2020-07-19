@@ -77,8 +77,10 @@ public class SignInController extends Controller{
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                        UserSession.getInstace(user);
-                        Utils.loggedMenuAdmin(btnMenuList);
+                        if (user.getType().getName().equals("Admin")){
+                            Utils.loggedMenuAdmin(btnMenuList);
+                        }else  Utils.loggedMenuUser(btnMenuList);
+
                         helloUser.setText(Utils.convertUTF8IntoString("Chào, ")+ user.getName());
                         titleName.setText(Utils.convertUTF8IntoString("DANH SÁCH HỘI NGHỊ"));
                         Utils.getButtonById("btnList",btnMenuList).requestFocus();

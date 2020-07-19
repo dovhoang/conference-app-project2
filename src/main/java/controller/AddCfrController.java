@@ -39,6 +39,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -54,13 +55,13 @@ public class AddCfrController extends Controller {
     private DatePicker addCfr_date;
 
     @FXML
-    private ComboBox<LocalTime> addCfr_time;
+    private  ComboBox<LocalTime> addCfr_time = new ComboBox<LocalTime>();
 
     @FXML
-    private ComboBox<Place> addCfr_place;
+    private  ComboBox<Place> addCfr_place  = new ComboBox<Place>();
 
     @FXML
-    private ComboBox<Room> addCfr_room;
+    private  ComboBox<Room> addCfr_room  = new ComboBox<Room>();
 
     @FXML
     private TextField addCfr_numberAttendees;
@@ -87,6 +88,10 @@ public class AddCfrController extends Controller {
     private Text addCfr_error;
 
     List<File> fileList = new ArrayList<>();
+    Room room;
+    LocalDate date;
+    LocalTime time;
+
 
     public void loadView() {
         addCfr_name.clear();
@@ -96,16 +101,9 @@ public class AddCfrController extends Controller {
         numPicture.setText(Utils.convertUTF8IntoString("Đã chọn: 0 file"));
 
         int id = ConferenceDAO.getMaxId() + 1;
-        final Room[] room = new Room[1];
-        final LocalDate[] date = new LocalDate[1];
-        final LocalTime[] time = new LocalTime[1];
 
         //get date
-        addCfr_date.setOnAction(new EventHandler() {
-            public void handle(Event t) {
-                date[0] = addCfr_date.getValue();
-            }
-        });
+        addCfr_date.setOnAction((EventHandler) t -> date = addCfr_date.getValue());
 
         //get time
         ObservableList<LocalTime> timeOptions = FXCollections.observableArrayList();
@@ -115,11 +113,13 @@ public class AddCfrController extends Controller {
             i++;
         }
         addCfr_time.setItems(timeOptions);
-        addCfr_time.getSelectionModel().select(0);
         addCfr_time.setConverter(new StringConverter<LocalTime>() {
             @Override
             public String toString(LocalTime object) {
-                return object.toString();
+                if(object!=null) {
+                    return object.toString();
+                }
+                return "";
             }
 
             @Override
@@ -131,18 +131,21 @@ public class AddCfrController extends Controller {
         addCfr_time.valueProperty().addListener(new ChangeListener<LocalTime>() {
             @Override
             public void changed(ObservableValue<? extends LocalTime> observable, LocalTime oldValue, LocalTime newValue) {
-                time[0] = newValue;
+                time = newValue;
             }
         });
 
         //get room and place
         ObservableList<Place> placeOptions = PlaceDAO.getPlacesList();
+
         addCfr_place.setItems(placeOptions);
-        addCfr_place.getSelectionModel().select(0);
         addCfr_place.setConverter(new StringConverter<Place>() {
             @Override
             public String toString(Place object) {
-                return object.getName();
+                if(object!=null) {
+                    return object.getName();
+                }
+                return "";
             }
 
             @Override
@@ -158,7 +161,6 @@ public class AddCfrController extends Controller {
                                 Place newValue) {
                 ObservableList<Room> roomOptions = RoomDAO.getRoomsListByPlace(newValue);
                 addCfr_room.setItems(roomOptions);
-                addCfr_room.getSelectionModel().select(0);
                 addCfr_room.setConverter(new StringConverter<Room>() {
                     @Override
                     public String toString(Room object) {
@@ -171,7 +173,7 @@ public class AddCfrController extends Controller {
                                 ap.getName().equals(string)).findFirst().orElse(null);
                     }
                 });
-                addCfr_room.valueProperty().addListener((observable1, oldValue1, newValue1) -> room[0] = newValue1);
+                addCfr_room.valueProperty().addListener((observable1, oldValue1, newValue1) -> room = newValue1);
             }
         });
 
@@ -188,17 +190,17 @@ public class AddCfrController extends Controller {
                 String name = addCfr_name.getText();
                 String generalDesc = addCfr_generalDesc.getText();
                 String detailDesc = addCfr_detiailDesc.getText();
-                if (date[0] != null && time[0] != null && room[0] != null) {
-                    datetime = Timestamp.valueOf(LocalDateTime.of(date[0], time[0]));
+                if (date != null && time != null && room != null) {
+                    datetime = Timestamp.valueOf(LocalDateTime.of(date, time));
                     try {
                         numberAttendees = Integer.parseInt(addCfr_numberAttendees.getText());
                         if (numberAttendees < 10) {
                             error = error.concat(Utils.convertUTF8IntoString("\nSố người tham gia tối tiêu là 10"));
                             flag = false;
                         }
-                        if (numberAttendees > room[0].getCapacity()) {
+                        if (numberAttendees > room.getCapacity()) {
                             error = error.concat(Utils.convertUTF8IntoString("\nSố người tham gia tối đa là ")
-                                    + room[0].getCapacity());
+                                    + room.getCapacity());
                             flag = false;
                         }
                     } catch (NumberFormatException e) {
@@ -215,9 +217,10 @@ public class AddCfrController extends Controller {
                     error = error.concat(Utils.convertUTF8IntoString("\nCác trường không được để trống"));
                     flag = false;
                 }
+                System.out.println(error);
                 addCfr_error.setText(error);
                 if (flag) {
-                    Conference cfr = new Conference(id, name, room[0], generalDesc, detailDesc, datetime, numberAttendees);
+                    Conference cfr = new Conference(id, name, room, generalDesc, detailDesc, datetime, numberAttendees);
                     ConferenceDAO.insertConference(cfr);
                     paneAddCfrError.setVisible(false);
                     try {

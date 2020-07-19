@@ -2,6 +2,7 @@ package DAO;
 
 import DTO.ConferenceDetailDTO;
 import DTO.MyConferencesDTO;
+import global.UserSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
@@ -80,7 +81,8 @@ public class ConferenceDAO {
         return -1;
     }
 
-    public static ObservableList<MyConferencesDTO> getMyConferencesByUser(User user){
+    public static ObservableList<MyConferencesDTO> getMyConferencesByUser(){
+        User user = UserSession.getInstance().getUser();
         List<Attends> attendsList= AttendsDAO.getAttendsByUser(user);
         List<MyConferencesDTO> cfrFullList = new ArrayList<>();
         for(Attends i :attendsList){
@@ -88,6 +90,32 @@ public class ConferenceDAO {
         }
         return FXCollections.observableArrayList(cfrFullList);
     }
+
+    public static ObservableList<MyConferencesDTO> searchMyConference(String keyword){
+        User user = UserSession.getInstance().getUser();
+        SessionFactory factory = HibernateUtils.getSessionFactory();
+        Session session = factory.openSession();
+        List<Attends> attendsList = AttendsDAO.getAttendsByUser(user);
+        List<MyConferencesDTO> cfrFullList = new ArrayList<>();
+        int id=0;
+        try{
+            id = Integer.parseInt(keyword);
+        }catch(NumberFormatException e){
+            e.printStackTrace();
+        }
+        for(Attends i :attendsList){
+            if (i.getConference().getName().toLowerCase().contains(keyword.toLowerCase())
+                    || i.getId() == id
+                    || i.getConference().getRoom().getPlace().getName().toLowerCase()
+                    .contains(keyword.toLowerCase())
+                    || i.getConference().getRoom().getName().toLowerCase()
+                    .contains(keyword.toLowerCase())){
+                cfrFullList.add(i.getMyConference());
+            }
+        }
+        return FXCollections.observableArrayList(cfrFullList);
+    }
+
 
     public static ConferenceDetailDTO getConferenceDetailById(int id){
         Conference cfr= getConferenceById(id);
@@ -143,4 +171,6 @@ public class ConferenceDAO {
         }
 
     }
+
+
 }

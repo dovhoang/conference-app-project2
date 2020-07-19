@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane fx:id="paneAddCfr" alignment="CENTER" prefHeight="419.0" prefWidth="886.0" style="-fx-background-color: #ffff; -fx-border-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddCfrController">
+<GridPane fx:id="paneAddCfr" alignment="CENTER" style="-fx-background-color: #ffff; -fx-border-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddCfrController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" />
     <ColumnConstraints hgrow="SOMETIMES" />
@@ -47,7 +47,7 @@
                     </font>
                 </Button>
                 <Label layoutX="23.0" layoutY="255.0" text="Mô tả chung" />
-                <TextArea fx:id="addCfr_generalDesc" layoutX="21.0" layoutY="278.0" prefHeight="121.0" prefWidth="378.0" wrapText="true" />
+                <TextArea fx:id="addCfr_generalDesc" layoutX="21.0" layoutY="278.0" prefHeight="134.0" prefWidth="378.0" wrapText="true" />
                 <Text fx:id="numPicture" fill="#757575" layoutX="248.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đã chọn: 0 file" wrappingWidth="146.0" />
             </children>
         </Pane>
@@ -56,7 +56,7 @@
                 <Label layoutX="18.0" layoutY="22.0" text="Mô tả chi tiết" />
                 <TextArea fx:id="addCfr_detiailDesc" layoutX="18.0" layoutY="51.0" prefHeight="303.0" prefWidth="442.0" wrapText="true" />
                 <Button fx:id="btnAddCfrForm" layoutX="342.0" layoutY="369.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="118.0" text="Thêm" textFill="WHITE" />
-            <Pane fx:id="paneAddCfrError" layoutX="14.0" layoutY="368.0" prefHeight="45.0" prefWidth="317.0" visible="false">
+            <Pane fx:id="paneAddCfrError" layoutX="14.0" layoutY="356.0" prefHeight="67.0" prefWidth="287.0" visible="false">
                <children>
                   <Text fx:id="addCfr_error" fill="RED" layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                </children>
