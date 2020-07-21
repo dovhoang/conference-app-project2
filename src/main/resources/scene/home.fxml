@@ -169,9 +169,9 @@
             <Pane fx:id="paneTitle" maxWidth="-Infinity" prefHeight="109.0" prefWidth="969.0" style="-fx-background-color: #642EFE;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <Button layoutX="785.0" layoutY="39.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="134.0" style="-fx-background-color: #FF0000;" text="Chỉnh sửa" textAlignment="CENTER" visible="false" />
-                  <AnchorPane layoutX="13.0" layoutY="21.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="68.0" prefWidth="944.0">
+                  <AnchorPane layoutX="13.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="109.0" prefWidth="944.0">
                      <children>
-                        <Label fx:id="titleName" layoutX="-14.0" layoutY="-38.0" text="DANH SÁCH HỘI NGHỊ" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Label fx:id="titleName" layoutX="-14.0" layoutY="-19.0" prefHeight="103.0" prefWidth="944.0" text="DANH SÁCH HỘI NGHỊ" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="-16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-19.0">
                            <font>
                               <Font name="System Bold" size="28.0" />
                            </font>

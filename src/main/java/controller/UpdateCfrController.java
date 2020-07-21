@@ -168,7 +168,7 @@ public class UpdateCfrController extends Controller {
                 int numberAttendees = 0;
                 Timestamp datetime = null;
                 String name = updateCfr_name.getText();
-                titleName.setText(name);
+                titleName.setText(Utils.convertUTF8IntoString("CẬP NHẬT HỘI NGHỊ"));
                 String generalDesc = updateCfr_generalDesc.getText();
                 String detailDesc = updateCfr_detailDesc.getText();
                 System.out.println(date);

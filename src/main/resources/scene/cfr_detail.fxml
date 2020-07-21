@@ -118,6 +118,9 @@
                               <font>
                                   <Font name="Times New Roman Bold" size="16.0" />
                               </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
                           </Label>
                           <Text fx:id="cfr_general" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="JUSTIFY" wrappingWidth="517.0">
                      <VBox.margin>
@@ -134,7 +137,7 @@
                         </Label>
                         <ScrollPane fitToWidth="true" hbarPolicy="NEVER" pannable="true" prefHeight="229.0" prefWidth="410.0" style="-fx-background-color: #ffffff;">
                             <content>
-                                <AnchorPane focusTraversable="true" prefHeight="212.0" prefWidth="409.0" style="-fx-background-color: #e6f9ff;">
+                                <AnchorPane focusTraversable="true" prefHeight="212.0" prefWidth="409.0">
                                     <children>
                                         <Text fx:id="cfr_detail" layoutX="7.0" layoutY="37.98046875" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="JUSTIFY" textOrigin="CENTER" wrappingWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" />
                                     </children>

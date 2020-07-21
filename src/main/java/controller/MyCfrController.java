@@ -83,8 +83,8 @@ public class MyCfrController extends Controller{
                         e.printStackTrace();
                     }
                     titleName.setText(conferenceDetailDTO.getName());
-                    if (conferenceDetailDTO.getName().length() > 50) {
-                        titleName.setFont(Font.font("verdana", FontWeight.BOLD, 28.0 / conferenceDetailDTO.getName().length() * 50));
+                    if (conferenceDetailDTO.getName().length() > 40) {
+                        titleName.setFont(Font.font("verdana", FontWeight.BOLD, 24));
                     }
                 }
             });

@@ -1,8 +1,13 @@
 package controller;
 
 import DAO.ConferenceDAO;
+import DTO.ApprovalDTO;
 import DTO.ConferenceDetailDTO;
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
+import global.UserSession;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,9 +16,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
+import pojo.User;
 import utils.Utils;
 
 import java.io.IOException;
@@ -44,6 +52,7 @@ public class CfrListController extends Controller{
     @FXML
     private Text numSearchResult;
 
+    boolean flag = true;
 
     @Override
     public void loadView() {
@@ -65,8 +74,8 @@ public class CfrListController extends Controller{
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                if (conference.getName().length() > 50) {
-                    titleName.setFont(Font.font("verdana", FontWeight.BOLD, 28.0 / conference.getName().length() * 50));
+                if (conference.getName().length() > 40) {
+                    titleName.setFont(Font.font("verdana", FontWeight.BOLD, 24));
                 }
             });
             return cell;
@@ -74,6 +83,15 @@ public class CfrListController extends Controller{
         table_place.setCellFactory(tc -> getTableCellCustom());
         table_info.setCellFactory(tc -> getTableCellCustom());
         table.setItems(ConferenceDAO.getConferencesDetail());
+        UserSession userSession = UserSession.getInstance();
+        if (userSession!=null){
+            if (userSession.getUser().getType().getName().equals("Admin")){
+                flag = addButtonEditConference();
+            }else{
+                table.getColumns().remove(getTableColumnByName(table," "));
+                flag = true;
+            }
+        }
         numSearchResult.setVisible(false);
         numSearchResult.setManaged(false);
         btnSearch.setOnAction(event -> {
@@ -86,7 +104,59 @@ public class CfrListController extends Controller{
             }
         });
 
+
+
     }
+
+    private TableColumn<DTO.ConferenceDetailDTO, ?> getTableColumnByName(TableView<DTO.ConferenceDetailDTO> tableView, String name) {
+        for (TableColumn<DTO.ConferenceDetailDTO, ?> col : tableView.getColumns())
+            if (col.getText().equals(name)) return col ;
+        return null ;
+    }
+
+    private boolean addButtonEditConference() {
+        TableColumn<ConferenceDetailDTO, Void> colBtn = new TableColumn(" ");
+
+        Callback<TableColumn<ConferenceDetailDTO, Void>, TableCell<ConferenceDetailDTO, Void>> cellFactory = new Callback<>() {
+            @Override
+            public TableCell<ConferenceDetailDTO, Void> call(final TableColumn<ConferenceDetailDTO, Void> param) {
+                final TableCell<ConferenceDetailDTO, Void> cell = new TableCell<>() {
+
+                    private final Button btn = new Button();
+                    {
+                        btn.setStyle("-fx-background-color: #FF0000;-fx-fill:#FFFFFF");
+                        btn.setGraphic(GlyphsDude.createIcon(FontAwesomeIcons.EDIT));
+                        btn.setOnAction((ActionEvent event) -> {
+                            ConferenceDetailDTO data = getTableView().getItems().get(getIndex());
+                            try {
+                                titleName.setText(Utils.convertUTF8IntoString("CẬP NHẬT HỘI NGHỊ"));
+                                addScreen("/scene/update_cfr.fxml",data);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            HBox box = new HBox(btn);
+                            box.setSpacing(5);
+                            setGraphic(box);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+        colBtn.setCellFactory(cellFactory);
+        table.getColumns().add(colBtn);
+        return false;
+    }
+
 
     void searchConference(){
         numSearchResult.setVisible(true);
@@ -99,7 +169,7 @@ public class CfrListController extends Controller{
     public void addScreen(String path, ConferenceDetailDTO cfr) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         stackPane.getChildren().add(loader.load());
-        CfrDetailController controller = loader.getController();
+        Controller controller = loader.getController();
         controller.getRoot(stackPane, cfr,titleName);
         controller.loadView(cfr);
     }

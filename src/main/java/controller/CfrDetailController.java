@@ -3,6 +3,7 @@ package controller;
 import DAO.AttendsDAO;
 import DAO.ConferenceDAO;
 import DAO.UserDAO;
+import DTO.ApprovalDTO;
 import DTO.ConferenceDetailDTO;
 import DTO.UserDTO;
 import DTO.UserInfoInConferenceDTO;
@@ -17,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -180,6 +182,8 @@ public class CfrDetailController extends Controller {
 
         };
     }
+
+
 
     public void addScreen(String path) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));

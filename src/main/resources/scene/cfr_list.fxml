@@ -14,7 +14,7 @@
 
 <GridPane fx:id="paneList" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CfrListController">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" />
+        <ColumnConstraints hgrow="SOMETIMES" prefWidth="970.0" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
@@ -55,7 +55,7 @@
                 <TableColumn fx:id="table_name" maxWidth="233.0" prefWidth="197.0" resizable="false" text="Hội nghị" />
                 <TableColumn fx:id="table_time" minWidth="0.0" prefWidth="125.0" resizable="false" text="Thời gian" />
                 <TableColumn fx:id="table_place" prefWidth="188.0" resizable="false" text="Địa điểm" />
-                <TableColumn fx:id="table_info" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="367.0" text="Tóm tắt" />
+                <TableColumn fx:id="table_info" minWidth="-1.0" prefWidth="324.0" text="Tóm tắt" />
             </columns>
             <GridPane.margin>
                 <Insets left="20.0" right="20.0" />
