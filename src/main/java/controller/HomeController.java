@@ -163,7 +163,8 @@ public class HomeController implements Initializable {
             UserSession.cleanUserSession();
             notLoggedMenu();
             try {
-                addScreen("scene/cfr_list.fxml");
+                addScreen("/scene/cfr_list.fxml");
+                titleName.setText(Utils.convertUTF8IntoString("DANH SÁCH HỘI NGHỊ"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

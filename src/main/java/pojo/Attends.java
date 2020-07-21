@@ -3,6 +3,7 @@ package pojo;
 import DTO.ApprovalDTO;
 import DTO.ConferenceDetailDTO;
 import DTO.MyConferencesDTO;
+import DTO.UserInfoInConferenceDTO;
 import javafx.scene.control.Button;
 import utils.Utils;
 
@@ -75,5 +76,9 @@ public class Attends {
 
     public ApprovalDTO getAttendsDetail(){
         return new ApprovalDTO(id,user.getUsername(),user.getName(),conference.getName());
+    }
+
+    public UserInfoInConferenceDTO getUserInfoInConference(){
+        return new UserInfoInConferenceDTO(user.getName(), user.getUsername());
     }
 }

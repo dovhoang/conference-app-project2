@@ -37,9 +37,9 @@ public class Controller {
         this.cfr = cfr;
         this.titleName = titleName;
     }
-    public void getRoot(StackPane stackPane, ConferenceDetailDTO cfr){
+    public void getRoot(StackPane stackPane, Label titleName){
         this.stackPane = stackPane;
-        this.cfr = cfr;
+        this.titleName = titleName;
     }
 
     public void getRoot(StackPane stackPane){

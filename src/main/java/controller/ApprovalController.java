@@ -48,7 +48,6 @@ public class ApprovalController extends Controller implements Initializable {
         if (flag) {
             flag = addButtonAppvoral();
         }
-        ;
     }
 
     private boolean addButtonAppvoral() {
@@ -67,7 +66,6 @@ public class ApprovalController extends Controller implements Initializable {
                         btn.setOnAction((ActionEvent event) -> {
                             ApprovalDTO data = getTableView().getItems().get(getIndex());
                             if (showAlertConfirmAppvoral(data, 1)) {
-                                pressed.requestFocus();
                                 approvalView();
                             }
                         });
@@ -78,7 +76,6 @@ public class ApprovalController extends Controller implements Initializable {
                         btn2.setOnAction((ActionEvent event) -> {
                             ApprovalDTO data = getTableView().getItems().get(getIndex());
                             if (showAlertConfirmAppvoral(data, 2)) {
-                                pressed.requestFocus();
                                 approvalView();
                             }
                         });

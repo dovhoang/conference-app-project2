@@ -7,24 +7,25 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane fx:id="paneCfr" prefHeight="0.0" prefWidth="751.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CfrDetailController">
+<GridPane fx:id="paneCfr" prefHeight="429.0" prefWidth="914.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CfrDetailController">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="970.0" minWidth="970.0" prefWidth="970.0" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <SplitPane dividerPositions="0.1877637130801688, 0.7679324894514767" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="751.0">
+        <SplitPane dividerPositions="0.1877637130801688, 0.7679324894514767" maxWidth="970.0" minHeight="-Infinity" minWidth="970.0" prefHeight="429.0" prefWidth="970.0">
             <items>
                 <VBox prefWidth="170.0">
                     <children>
@@ -110,22 +111,19 @@
                 </VBox>
                 <VBox prefHeight="458.0" prefWidth="339.0">
                     <children>
-                        <Pane prefWidth="781.0">
-                            <children>
-                                <Label layoutY="5.0" prefHeight="19.0" prefWidth="98.0" text="Tổng quan">
-                                    <padding>
-                                        <Insets left="20.0" />
-                                    </padding>
-                                    <font>
-                                        <Font name="Times New Roman Bold" size="16.0" />
-                                    </font>
-                                </Label>
-                                <Text fx:id="cfr_general" layoutX="22.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="JUSTIFY" wrappingWidth="525.0" />
-                            </children>
-                            <VBox.margin>
-                                <Insets bottom="20.0" />
-                            </VBox.margin>
-                        </Pane>
+                          <Label prefHeight="19.0" prefWidth="98.0" text="Tổng quan">
+                              <padding>
+                                  <Insets left="20.0" />
+                              </padding>
+                              <font>
+                                  <Font name="Times New Roman Bold" size="16.0" />
+                              </font>
+                          </Label>
+                          <Text fx:id="cfr_general" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="JUSTIFY" wrappingWidth="517.0">
+                     <VBox.margin>
+                        <Insets left="20.0" right="10.0" />
+                     </VBox.margin>
+                  </Text>
                         <Label text="Thông tin chi tiết">
                             <font>
                                 <Font name="Times New Roman Bold" size="16.0" />
@@ -134,11 +132,11 @@
                                 <Insets left="20.0" />
                             </padding>
                         </Label>
-                        <ScrollPane hbarPolicy="NEVER" maxWidth="1.7976931348623157E308" prefHeight="365.0" prefWidth="558.0">
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" pannable="true" prefHeight="229.0" prefWidth="410.0" style="-fx-background-color: #ffffff;">
                             <content>
-                                <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefWidth="546.0">
+                                <AnchorPane focusTraversable="true" prefHeight="212.0" prefWidth="409.0" style="-fx-background-color: #e6f9ff;">
                                     <children>
-                                        <Text fx:id="cfr_detail" layoutY="12.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="JUSTIFY" wrappingWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0" />
+                                        <Text fx:id="cfr_detail" layoutX="7.0" layoutY="37.98046875" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="JUSTIFY" textOrigin="CENTER" wrappingWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" />
                                     </children>
                                     <padding>
                                         <Insets top="10.0" />
@@ -146,13 +144,34 @@
                                 </AnchorPane>
                             </content>
                         </ScrollPane>
+                  <Label text="Danh sách tham dự">
+                     <padding>
+                        <Insets bottom="10.0" left="20.0" />
+                     </padding>
+                     <font>
+                        <Font name="Times New Roman Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="table_attends" prefHeight="118.0">
+                    <columns>
+                        <TableColumn fx:id="table_id" maxWidth="-1.0" minWidth="30.0" prefWidth="30.0" text="STT" />
+                      <TableColumn fx:id="table_username" prefWidth="160.0" text="Username" />
+                      <TableColumn fx:id="table_name" prefWidth="160.0" text="Họ tên" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="40.0" right="40.0" />
+                     </VBox.margin>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
                     </children>
                 </VBox>
                 <VBox>
                     <children>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="455.0" prefWidth="225.0">
+                        <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="233.0">
                             <content>
-                                <VBox fx:id="cfr_picture" prefHeight="200.0" prefWidth="100.0" />
+                                <VBox fx:id="cfr_picture" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="200.0" prefWidth="228.0" />
                             </content>
                         </ScrollPane>
                     </children></VBox>

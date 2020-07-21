@@ -3,6 +3,7 @@ package DAO;
 import DTO.ApprovalDTO;
 import DTO.ConferenceDetailDTO;
 import DTO.MyConferencesDTO;
+import DTO.UserInfoInConferenceDTO;
 import global.UserSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -51,6 +52,22 @@ public class AttendsDAO {
         }
     }
 
+    public static void deleteAttends(User user, Conference conference){
+        SessionFactory factory = HibernateUtils.getSessionFactory();
+        Session session = factory.openSession();
+        try{
+            session.getTransaction().begin();
+            String hql = "delete from Attends where conference_id = "+conference.getId()
+                    +" and user_id = "+ user.getId();
+            Query query = session.createSQLQuery(hql);
+            query.executeUpdate();
+            session.getTransaction().commit();
+        }catch (Exception e ){
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+    }
+
     public static void updateAppvoralAttends(int id, int approval){
         SessionFactory factory = HibernateUtils.getSessionFactory();
         Session session = factory.openSession();
@@ -76,12 +93,12 @@ public class AttendsDAO {
                     " and a.conference = " + conference.getId();
             Query<Attends> query = session.createQuery(hql);
             List<Attends> list = query.list();
-            if (list.size()==0) return 0;
+            if (list.size()==0) return -1;
             else return list.get(0).getApproval();
         }catch (Exception e ){
             e.printStackTrace();
             session.getTransaction().rollback();
-            return 0;
+            return -1;
         }
     }
 
@@ -95,6 +112,28 @@ public class AttendsDAO {
             Query<Attends> query = session.createQuery(hql);
             list= query.list();
             return list;
+
+        }catch (Exception e ){
+            e.printStackTrace();
+            session.getTransaction().rollback();
+            return null;
+        }
+    }
+
+    public static ObservableList<UserInfoInConferenceDTO> getAttendsByConference(Conference conference){
+        SessionFactory factory = HibernateUtils.getSessionFactory();
+        Session session = factory.openSession();
+        List<Attends> list ;
+        List<UserInfoInConferenceDTO> userList = new ArrayList<>();
+        try{
+            session.getTransaction().begin();
+            String hql= "from Attends where conference = "+conference.getId()+ " and approval = 1";
+            Query<Attends> query = session.createQuery(hql);
+            list= query.list();
+            for (Attends attend : list) {
+                userList.add(attend.getUserInfoInConference());
+            }
+            return FXCollections.observableList(userList);
 
         }catch (Exception e ){
             e.printStackTrace();

@@ -2,17 +2,18 @@ package controller;
 
 import DAO.AttendsDAO;
 import DAO.ConferenceDAO;
+import DAO.UserDAO;
 import DTO.ConferenceDetailDTO;
+import DTO.UserDTO;
+import DTO.UserInfoInConferenceDTO;
 import global.UserSession;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -21,6 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
 import pojo.Conference;
 import pojo.User;
 import utils.Utils;
@@ -67,6 +69,18 @@ public class CfrDetailController extends Controller {
     @FXML
     private VBox cfr_picture;
 
+    @FXML
+    private TableView<UserInfoInConferenceDTO> table_attends = new TableView<>();
+
+    @FXML
+    private TableColumn<UserInfoInConferenceDTO, Integer> table_id = new TableColumn<>();
+
+    @FXML
+    private TableColumn<UserInfoInConferenceDTO, String> table_username = new TableColumn<>();
+
+    @FXML
+    private TableColumn<UserInfoInConferenceDTO, String> table_name = new TableColumn<>();
+
 
     @FXML
     public void loadView(ConferenceDetailDTO cfr) {
@@ -105,8 +119,10 @@ public class CfrDetailController extends Controller {
         int checkAttends;
         if (UserSession.isLogin()) {
             checkAttends = AttendsDAO.checkAttend(UserSession.getInstance().getUser(), conference);
-            if (checkAttends == 1) {
-                btnRegisterCfr.setText("Đã đăng kí");
+            if(checkAttends==0){
+                btnRegisterCfr.setText("Đang chờ duyệt");
+            }else if (checkAttends == 1) {
+                btnRegisterCfr.setText("Đã duyệt");
                 btnRegisterCfr.setDisable(true);
             } else if (checkAttends == 2) {
                 btnRegisterCfr.setText("Đã từ chối");
@@ -118,9 +134,13 @@ public class CfrDetailController extends Controller {
             @Override
             public void handle(ActionEvent event) {
                 if (UserSession.isLogin()) {
-                    showAlertConfirmConference(conference);
+                    showAlertConfirmConference(conference, btnRegisterCfr.getText().equals("Đăng ký"));
                 } else {
-                    showAlertWarnSignIn();
+                    try {
+                        showAlertWarnSignIn();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
@@ -143,8 +163,22 @@ public class CfrDetailController extends Controller {
                 }
             }
         });
+        table_id.setCellFactory(indexCellFactory());
+        table_username.setCellValueFactory(new PropertyValueFactory<>("username"));
+        table_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        table_attends.setItems(AttendsDAO.getAttendsByConference(conference));
+    }
 
+    public static <T> Callback<TableColumn<UserInfoInConferenceDTO, Integer>, TableCell<UserInfoInConferenceDTO, Integer>> indexCellFactory() {
+        return t -> new TableCell<>() {
 
+            @Override
+            public void updateIndex(int i) {
+                super.updateIndex(i);
+                setText(isEmpty() ? "" : Integer.toString(i));
+            }
+
+        };
     }
 
     public void addScreen(String path) throws IOException {
@@ -155,24 +189,47 @@ public class CfrDetailController extends Controller {
         controller.loadView(cfr);
     }
 
-    private void showAlertConfirmConference(Conference conference) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Đăng kí tham gia hội nghị");
-        alert.setHeaderText("Xác nhận tham gia hội nghị: " + conference.getName());
-        Optional<ButtonType> option = alert.showAndWait();
-        if (option.get() == ButtonType.OK) {
-            User user = UserSession.getInstance().getUser();
-            AttendsDAO.insertAttends(user, conference);
-            btnRegisterCfr.setDisable(true);
-            btnRegisterCfr.setText(Utils.convertUTF8IntoString("Đã đăng ký"));
-        }
+    public void addScreenSignIn(String path) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        stackPane.getChildren().add(loader.load());
+        Controller controller = loader.getController();
+        controller.getRoot(stackPane,titleName);
+        controller.loadView();
     }
 
-    private void showAlertWarnSignIn() {
+    private void showAlertConfirmConference(Conference conference, boolean register) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        if (register){
+            alert.setTitle("Đăng kí tham gia hội nghị");
+            alert.setHeaderText("Xác nhận tham gia hội nghị: " + conference.getName());
+            Optional<ButtonType> option = alert.showAndWait();
+            if (option.get() == ButtonType.OK) {
+                User user = UserSession.getInstance().getUser();
+                AttendsDAO.insertAttends(user, conference);
+                btnRegisterCfr.setText(Utils.convertUTF8IntoString("Đang chờ duyệt"));
+            }
+        }else{
+            alert.setTitle("Hủy tham gia hội nghị");
+            alert.setHeaderText("Xác hủy tham gia hội nghị: " + conference.getName());
+            Optional<ButtonType> option = alert.showAndWait();
+            if (option.get() == ButtonType.OK) {
+                User user = UserSession.getInstance().getUser();
+                AttendsDAO.deleteAttends(user, conference);
+                btnRegisterCfr.setText(Utils.convertUTF8IntoString("Đăng ký"));
+            }
+        }
+
+    }
+
+    private void showAlertWarnSignIn() throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Đăng kí tham gia hội nghị");
         alert.setHeaderText("Bạn phải đăng nhập để thực hiện");
-        alert.showAndWait();
+        Optional<ButtonType> option = alert.showAndWait();
+        if (option.get() == ButtonType.OK){
+            addScreenSignIn("/scene/sign_in.fxml");
+            titleName.setText(Utils.convertUTF8IntoString("ĐĂNG NHẬP"));
+        }
     }
 
 }

@@ -1,6 +1,7 @@
 package DAO;
 
 import DTO.UserDTO;
+import DTO.UserInfoInConferenceDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
@@ -122,4 +123,6 @@ public class UserDAO {
             session.getTransaction().rollback();
         }
     }
+
+
 }
