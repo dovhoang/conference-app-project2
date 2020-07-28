@@ -1,5 +1,6 @@
 package DAO;
 
+import DTO.ConferenceDetailDTO;
 import DTO.UserDTO;
 import DTO.UserInfoInConferenceDTO;
 import javafx.collections.FXCollections;
@@ -133,6 +134,33 @@ public class UserDAO {
         }catch (Exception e ){
             e.printStackTrace();
             session.getTransaction().rollback();
+        }
+    }
+    
+    public static ObservableList<UserDTO> searchUser(String keyword){
+        SessionFactory factory = HibernateUtils.getSessionFactory();
+        Session session = factory.openSession();
+        List<User> list = new ArrayList<>();
+        List<UserDTO> userFullList = new ArrayList<>();
+        int id=0;
+        try{
+            id = Integer.parseInt(keyword);
+        }catch (NumberFormatException e){
+            e.printStackTrace();
+        }
+        try {
+            session.getTransaction().begin();
+            String hql = "select u from User u where u.name like '%"+keyword+"%' or u.username like '%"+keyword+"%' or u.id = "+id;
+            Query<User> query = session.createQuery(hql);
+            list = query.list();
+            for(User i :list){
+                userFullList.add(i.getUserDetail());
+            }
+            return FXCollections.observableArrayList(userFullList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+            return null;
         }
     }
 }

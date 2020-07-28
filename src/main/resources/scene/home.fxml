@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="window" maxHeight="600.0" maxWidth="1200.0" minHeight="600.0" minWidth="1200.0" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <stylesheets>
-      <URL value="@fullpackstyling.css" />
+      <URL value="@../css/fullpackstyling.css" />
    </stylesheets>
    <children>
       <VBox maxHeight="1.7976931348623157E308" prefHeight="600.0" prefWidth="230.0" style="-fx-background-color: #0B0B3B;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -117,20 +117,6 @@
                   <FontAwesomeIcon fill="WHITE" glyphName="TAGS" size="20" />
                </graphic>
             </Button>
-            <Button fx:id="btnSetting" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="230.0" text="Cài đặt" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="40.0" />
-               </padding>
-               <graphic>
-                  <FontAwesomeIcon fill="WHITE" glyphName="COG" size="20" />
-               </graphic>
-            </Button>
             <Button fx:id="btnSignIn" alignment="BASELINE_LEFT" graphicTextGap="12.0" minHeight="57.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="230.0" text="Đăng nhập" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -194,6 +180,6 @@
       </AnchorPane>
    </children>
    <stylesheets>
-      <URL value="@custom.css" />
+      <URL value="@../css/custom.css" />
    </stylesheets>
 </AnchorPane>

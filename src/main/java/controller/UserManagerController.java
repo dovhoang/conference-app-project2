@@ -1,15 +1,20 @@
 package controller;
 
+import DAO.ConferenceDAO;
 import DAO.UserDAO;
+import DTO.ConferenceDetailDTO;
 import DTO.UserDTO;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 import utils.Utils;
 
@@ -37,6 +42,15 @@ public class UserManagerController extends Controller {
     @FXML
     private TableColumn<UserDTO, String> userManager_status;
 
+    @FXML
+    private Button btnSearch;
+
+    @FXML
+    private TextField searchField;
+
+    @FXML
+    private Text numSearchResult;
+
     boolean flag = true;
 
     @Override
@@ -48,7 +62,25 @@ public class UserManagerController extends Controller {
         userManager_status.setCellValueFactory(new PropertyValueFactory<>("active"));
         table_userManager.setItems(UserDAO.getUserList());
         if (flag) flag = addButtonActiveUser();
+        numSearchResult.setVisible(false);
+        btnSearch.setOnAction(event -> {
+            searchUser();
+        });
 
+        searchField.setOnKeyPressed(event -> {
+            if (event.getCode()== KeyCode.ENTER){
+                searchUser();
+            }
+        });
+
+    }
+
+    public void searchUser(){
+        numSearchResult.setVisible(true);
+        numSearchResult.setManaged(true);
+        ObservableList<UserDTO> listSearch = UserDAO.searchUser(searchField.getText());
+        numSearchResult.setText(Utils.convertUTF8IntoString("Tìm thấy "+ listSearch.size()+ " kết quả"));
+        table_userManager.setItems(listSearch);
     }
 
     private boolean addButtonActiveUser() {

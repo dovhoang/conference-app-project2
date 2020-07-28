@@ -170,7 +170,7 @@ public class HomeController implements Initializable {
             }
         });
 
-        listButtonMenu = Arrays.asList(btnList, btnProfile, btnSetting, btnMyCfr, btnAddCfr, btnUserManager,
+        listButtonMenu = Arrays.asList(btnList, btnProfile, btnMyCfr, btnAddCfr, btnUserManager,
                 btnAddCfr, btnAppvoral, btnSignIn, btnSignOut);
     }
 
