@@ -33,6 +33,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -118,6 +120,10 @@ public class CfrDetailController extends Controller {
             btnRegisterCfr.setText("Hết chỗ");
             btnRegisterCfr.setDisable(true);
         }
+        if(conference.getTime().before(new Timestamp(System.currentTimeMillis()))){
+            btnRegisterCfr.setText("Đã diễn ra");
+            btnRegisterCfr.setDisable(true);
+        }
         int checkAttends;
         if (UserSession.isLogin()) {
             checkAttends = AttendsDAO.checkAttend(UserSession.getInstance().getUser(), conference);
@@ -153,6 +159,9 @@ public class CfrDetailController extends Controller {
             if (UserSession.getInstance().getUser().getType().getName().equals("Admin")) {
                 btnEditCfr.setVisible(true);
                 btnEditCfr.setManaged(true);
+                if (conference.getTime().before(new Timestamp(System.currentTimeMillis()))){
+                    btnEditCfr.setDisable(true);
+                }
             }
         }
         btnEditCfr.setOnAction(new EventHandler<ActionEvent>() {
@@ -182,8 +191,6 @@ public class CfrDetailController extends Controller {
 
         };
     }
-
-
 
     public void addScreen(String path) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));

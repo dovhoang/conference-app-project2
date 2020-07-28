@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
@@ -61,38 +62,44 @@ public class SignUpController extends Controller{
         signUpEmail.clear();
         signUpPassword.clear();
         signUpPasswordRepeat.clear();
-        btnSignUpForm.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                int id = UserDAO.getMaxIUser();
-                String name = signUpName.getText();
-                String username = signUpUsername.getText();
-                String email = signUpEmail.getText();
-                String password = signUpPassword.getText();
-                if (checkErrorFormSignUp()) {
-                    password = Utils.hashPassword(password);
-                    User user = new User(id, name, username, password, email,
-                            new UserType(1, "User"), true);
-                    if (!UserDAO.checkExistsUsernameAndEmail(user)) {
-                        try {
-                            addScreen("/scene/cfr_list.fxml");
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        UserSession.getInstace(user);
-                        Utils.loggedMenuAdmin(btnMenuList);
-                        titleName.setText(Utils.convertUTF8IntoString("Quản lí hội nghị"));
-                        helloUser.setText(Utils.convertUTF8IntoString("Chào, ")+ user.getName());
-                        Utils.getButtonById("btnList",btnMenuList).requestFocus();
-                    } else {
-                        signUpError.setText("Tên đăng nhập hoặc email đã trùng");
-                        paneSignUpError.setVisible(true);
-                    }
-                } else {
-                    paneSignUpError.setVisible(true);
-                }
+        signUpPasswordRepeat.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER){
+                signUp();
             }
         });
+        btnSignUpForm.setOnAction(event -> {
+            signUp();
+        });
+    }
+
+    public void signUp(){
+        int id = UserDAO.getMaxIUser();
+        String name = signUpName.getText();
+        String username = signUpUsername.getText();
+        String email = signUpEmail.getText();
+        String password = signUpPassword.getText();
+        if (checkErrorFormSignUp()) {
+            password = Utils.hashPassword(password);
+            User user = new User(id, name, username, password, email,
+                    new UserType(1, "User"), true);
+            if (!UserDAO.checkExistsUsernameAndEmail(user)) {
+                try {
+                    addScreen("/scene/cfr_list.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                UserSession.getInstace(user);
+                Utils.loggedMenuAdmin(btnMenuList);
+                titleName.setText(Utils.convertUTF8IntoString("Quản lí hội nghị"));
+                helloUser.setText(Utils.convertUTF8IntoString("Chào, ")+ user.getName());
+                Utils.getButtonById("btnList",btnMenuList).requestFocus();
+            } else {
+                signUpError.setText("Tên đăng nhập hoặc email đã trùng");
+                paneSignUpError.setVisible(true);
+            }
+        } else {
+            paneSignUpError.setVisible(true);
+        }
     }
 
     public void addScreen(String path) throws IOException {

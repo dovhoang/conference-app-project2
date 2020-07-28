@@ -26,6 +26,8 @@ import utils.Utils;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static utils.Utils.getTableCellCustom;
@@ -128,11 +130,16 @@ public class CfrListController extends Controller{
                         btn.setGraphic(GlyphsDude.createIcon(FontAwesomeIcons.EDIT));
                         btn.setOnAction((ActionEvent event) -> {
                             ConferenceDetailDTO data = getTableView().getItems().get(getIndex());
-                            try {
-                                titleName.setText(Utils.convertUTF8IntoString("CẬP NHẬT HỘI NGHỊ"));
-                                addScreen("/scene/update_cfr.fxml",data);
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                            if(ConferenceDAO.getConferenceById(data.getId()).getTime()
+                                    .before(new Timestamp(System.currentTimeMillis()))){
+                                showAlertNotUpdate();
+                            }else{
+                                try {
+                                    titleName.setText(Utils.convertUTF8IntoString("CẬP NHẬT HỘI NGHỊ"));
+                                    addScreen("/scene/update_cfr.fxml",data);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         });
                     }
@@ -172,5 +179,12 @@ public class CfrListController extends Controller{
         Controller controller = loader.getController();
         controller.getRoot(stackPane, cfr,titleName);
         controller.loadView(cfr);
+    }
+
+    private void showAlertNotUpdate(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Không thể cập nhật");
+        alert.setHeaderText("Hội nghị đã diễn ra!");
+        alert.showAndWait();
     }
 }

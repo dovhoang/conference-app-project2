@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -55,39 +56,14 @@ public class SignInController extends Controller{
     public void loadView() {
         signInUsername.clear();
         signInPassword.clear();
-        btnSignInForm.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                String username = signInUsername.getText();
-                String password =signInPassword.getText();
-                String hash =  Utils.hashPassword(password);
-                User user = UserDAO.getUserByUsername(username);
-                if (user != null && Utils.checkPassword(password,hash)) {
-                    if (user.isActive()) {
-                        UserSession.getInstace(user);
-                        //
-                        try {
-                            addScreen("/scene/cfr_list.fxml");
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        if (user.getType().getName().equals("Admin")){
-                            Utils.loggedMenuAdmin(btnMenuList);
-                        }else  Utils.loggedMenuUser(btnMenuList);
-
-                        helloUser.setText(Utils.convertUTF8IntoString("Chào, ")+ user.getName());
-                        titleName.setText(Utils.convertUTF8IntoString("DANH SÁCH HỘI NGHỊ"));
-                        Utils.getButtonById("btnList",btnMenuList).requestFocus();
-                    } else {
-                        signInError.setVisible(true);
-                        signInError.setText(Utils.convertUTF8IntoString("Tài khoản của bạn đã bị chặn"));
-                    }
-                } else {
-                    signInError.setVisible(true);
-                    signInError.setText(Utils.convertUTF8IntoString("Tên tài khoản hoặc mật khẩu không đúng"));
-
-                }
+        signInPassword.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER){
+                signIn();
             }
+        });
+
+        btnSignInForm.setOnAction(event -> {
+            signIn();
         });
 
         btnSignUp.setOnAction(event -> {
@@ -98,6 +74,38 @@ public class SignInController extends Controller{
                 e.printStackTrace();
             }
         });
+    }
+
+    void signIn(){
+        String username = signInUsername.getText();
+        String password =signInPassword.getText();
+        String hash =  Utils.hashPassword(password);
+        User user = UserDAO.getUserByUsername(username);
+        if (user != null && Utils.checkPassword(password,hash)) {
+            if (user.isActive()) {
+                UserSession.getInstace(user);
+                //
+                try {
+                    addScreen("/scene/cfr_list.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if (user.getType().getName().equals("Admin")){
+                    Utils.loggedMenuAdmin(btnMenuList);
+                }else  Utils.loggedMenuUser(btnMenuList);
+
+                helloUser.setText(Utils.convertUTF8IntoString("Chào, ")+ user.getName());
+                titleName.setText(Utils.convertUTF8IntoString("DANH SÁCH HỘI NGHỊ"));
+                Utils.getButtonById("btnList",btnMenuList).requestFocus();
+            } else {
+                signInError.setVisible(true);
+                signInError.setText(Utils.convertUTF8IntoString("Tài khoản của bạn đã bị chặn"));
+            }
+        } else {
+            signInError.setVisible(true);
+            signInError.setText(Utils.convertUTF8IntoString("Tên tài khoản hoặc mật khẩu không đúng"));
+
+        }
     }
 
 }
