@@ -6,23 +6,16 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import pojo.User;
 import utils.Utils;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
 
 public class SignInController extends Controller{
 
@@ -66,9 +59,10 @@ public class SignInController extends Controller{
             @Override
             public void handle(ActionEvent event) {
                 String username = signInUsername.getText();
-                String passwrod = Utils.md5(signInPassword.getText());
-                User user = UserDAO.getUser(username, passwrod);
-                if (user != null) {
+                String password =signInPassword.getText();
+                String hash =  Utils.hashPassword(password);
+                User user = UserDAO.getUserByUsername(username);
+                if (user != null && Utils.checkPassword(password,hash)) {
                     if (user.isActive()) {
                         UserSession.getInstace(user);
                         //

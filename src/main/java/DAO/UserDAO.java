@@ -65,13 +65,13 @@ public class UserDAO {
         }
     }
 
-    public static User getUser(String username, String password){
+    public static User getUserByUsername(String username){
         SessionFactory factory = HibernateUtils.getSessionFactory();
         Session session = factory.openSession();
         List<User> list = new ArrayList<>();
         try{
             session.getTransaction().begin();
-            String hql = "select u from User u where u.username = '" +username + "' and u.password = '" + password+"'" ;
+            String hql = "select u from User u where u.username = '" +username +"'";
             Query<User> query = session.createQuery(hql);
             list = query.list();
             session.getTransaction().commit();
@@ -92,7 +92,7 @@ public class UserDAO {
         List<UserDTO> listDTO = new ArrayList<>();
         try{
             session.getTransaction().begin();
-            String hql = "from User" ;
+            String hql = "from User where type = 1" ;
             Query query = session.createQuery(hql);
             list = query.list();
             for (User u:list){
@@ -123,6 +123,16 @@ public class UserDAO {
             session.getTransaction().rollback();
         }
     }
-
-
+    public static void updateProfile(User user){
+        SessionFactory factory = HibernateUtils.getSessionFactory();
+        Session session = factory.openSession();
+        try{
+            session.getTransaction().begin();
+            session.update(user);
+            session.getTransaction().commit();
+        }catch (Exception e ){
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+    }
 }

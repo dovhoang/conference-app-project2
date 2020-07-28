@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javafx.scene.control.Label;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class Utils {
     public static String convertUTF8IntoString(String rawString) {
@@ -33,19 +34,14 @@ public class Utils {
                 + Utils.convertUTF8IntoString(" - ") + date;
     }
 
-    public static String md5(String str) {
-        String result = "";
-        MessageDigest digest;
-        try {
-            digest = MessageDigest.getInstance("MD5");
-            digest.update(str.getBytes());
-            BigInteger bigInteger = new BigInteger(1, digest.digest());
-            result = bigInteger.toString(16);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return result;
+    public static String hashPassword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt(12));
     }
+
+    public static boolean checkPassword(String password, String hash) {
+        return BCrypt.checkpw(password,hash);
+    }
+
 
     public static BufferedImage createResizedCopy(BufferedImage originalImage, int framesWidth, int framesHeight,
                                                   boolean preserveAlpha) {

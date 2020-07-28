@@ -70,7 +70,7 @@ public class SignUpController extends Controller{
                 String email = signUpEmail.getText();
                 String password = signUpPassword.getText();
                 if (checkErrorFormSignUp()) {
-                    password = Utils.md5(password);
+                    password = Utils.hashPassword(password);
                     User user = new User(id, name, username, password, email,
                             new UserType(1, "User"), true);
                     if (!UserDAO.checkExistsUsernameAndEmail(user)) {
@@ -120,7 +120,7 @@ public class SignUpController extends Controller{
             flag = false;
             error = error.concat(Utils.convertUTF8IntoString("\nTên đăng nhập từ 8 -32 kí tự có thể chứa chữ cái, số, \"_\" , \".\"  và bắt đầu từ chữ cái"));
         }
-        if (!email.matches("^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")) {
+        if (!email.matches(RegexEmail)) {
             flag = false;
             error = error.concat(Utils.convertUTF8IntoString("\nEmail không đúng định dạng"));
         }
