@@ -55,8 +55,8 @@ public class SignUpController extends Controller{
     private Text signUpError;
 
     public void loadView() {
-        signUpError.setVisible(false);
-        signUpError.setManaged(false);
+//        signUpError.setVisible(false);
+//        signUpError.setManaged(false);
         signUpName.clear();
         signUpUsername.clear();
         signUpEmail.clear();
@@ -89,16 +89,19 @@ public class SignUpController extends Controller{
                     e.printStackTrace();
                 }
                 UserSession.getInstace(user);
-                Utils.loggedMenuAdmin(btnMenuList);
-                titleName.setText(Utils.convertUTF8IntoString("Quản lí hội nghị"));
+                UserDAO.insertUser(user);
+                Utils.loggedMenuUser(btnMenuList);
+                titleName.setText(Utils.convertUTF8IntoString("Quản lý hội nghị"));
                 helloUser.setText(Utils.convertUTF8IntoString("Chào, ")+ user.getName());
                 Utils.getButtonById("btnList",btnMenuList).requestFocus();
             } else {
                 signUpError.setText("Tên đăng nhập hoặc email đã trùng");
                 paneSignUpError.setVisible(true);
+                paneSignUpError.setManaged(true);
             }
         } else {
             paneSignUpError.setVisible(true);
+            paneSignUpError.setManaged(true);
         }
     }
 

@@ -106,11 +106,11 @@ public class ApprovalController extends Controller implements Initializable {
         if (approval == 1) {
             alert.setTitle("Duyệt tham gia hội nghị");
             alert.setHeaderText("Xác nhận duyệt \"" + approvalDTO.getUsername() + "\" tham gia: " +
-                    approvalDTO.getName());
+                    approvalDTO.getConference());
         } else {
             alert.setTitle("Từ chối tham gia hội nghị");
             alert.setHeaderText("Xác từ chối \"" + approvalDTO.getUsername() + "\" tham gia: " +
-                    approvalDTO.getName());
+                    approvalDTO.getConference());
         }
         Optional<ButtonType> option = alert.showAndWait();
         if (option.get() == ButtonType.OK) {

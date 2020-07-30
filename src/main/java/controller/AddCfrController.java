@@ -180,58 +180,55 @@ public class AddCfrController extends Controller {
         chooseCfrPicture();
 
         // submit form
-        btnAddCfrForm.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                String error = Utils.convertUTF8IntoString("Lỗi:");
-                boolean flag = true;
-                int numberAttendees = 0;
-                Timestamp datetime = null;
-                String name = addCfr_name.getText();
-                String generalDesc = addCfr_generalDesc.getText();
-                String detailDesc = addCfr_detiailDesc.getText();
-                if (date != null && time != null && room != null) {
-                    datetime = Timestamp.valueOf(LocalDateTime.of(date, time));
-                    try {
-                        numberAttendees = Integer.parseInt(addCfr_numberAttendees.getText());
-                        if (numberAttendees < 10) {
-                            error = error.concat(Utils.convertUTF8IntoString("\nSố người tham gia tối tiêu là 10"));
-                            flag = false;
-                        }
-                        if (numberAttendees > room.getCapacity()) {
-                            error = error.concat(Utils.convertUTF8IntoString("\nSố người tham gia tối đa là ")
-                                    + room.getCapacity());
-                            flag = false;
-                        }
-                    } catch (NumberFormatException e) {
-                        error = error.concat(Utils.convertUTF8IntoString("\nSố người tham dự nhập sai định dạng"));
+        btnAddCfrForm.setOnAction(event -> {
+            String error = Utils.convertUTF8IntoString("Lỗi:");
+            boolean flag = true;
+            int numberAttendees = 0;
+            Timestamp datetime = null;
+            String name = addCfr_name.getText();
+            String generalDesc = addCfr_generalDesc.getText();
+            String detailDesc = addCfr_detiailDesc.getText();
+            if (date != null && time != null && room != null) {
+                datetime = Timestamp.valueOf(LocalDateTime.of(date, time));
+                try {
+                    numberAttendees = Integer.parseInt(addCfr_numberAttendees.getText());
+                    if (numberAttendees < 10) {
+                        error = error.concat(Utils.convertUTF8IntoString("\nSố người tham gia tối tiêu là 10"));
                         flag = false;
                     }
-                    if (name.equals("") || generalDesc.equals("") ||
-                            detailDesc.equals("")) {
-                        error = error.concat(Utils.convertUTF8IntoString("\nCác trường không được để trống"));
+                    if (numberAttendees > room.getCapacity()) {
+                        error = error.concat(Utils.convertUTF8IntoString("\nSố người tham gia tối đa là ")
+                                + room.getCapacity());
                         flag = false;
                     }
-
-                } else {
+                } catch (NumberFormatException e) {
+                    error = error.concat(Utils.convertUTF8IntoString("\nSố người tham dự nhập sai định dạng"));
+                    flag = false;
+                }
+                if (name.equals("") || generalDesc.equals("") ||
+                        detailDesc.equals("")) {
                     error = error.concat(Utils.convertUTF8IntoString("\nCác trường không được để trống"));
                     flag = false;
                 }
-                System.out.println(error);
-                addCfr_error.setText(error);
-                if (flag) {
-                    Conference cfr = new Conference(id, name, room, generalDesc, detailDesc, datetime, numberAttendees);
-                    ConferenceDAO.insertConference(cfr);
-                    paneAddCfrError.setVisible(false);
-                    try {
-                        addScreen("scene/cfr_list.fxml");
-                        fileSaved(fileList, id);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
 
-                } else paneAddCfrError.setVisible(true);
+            } else {
+                error = error.concat(Utils.convertUTF8IntoString("\nCác trường không được để trống"));
+                flag = false;
             }
+            System.out.println(error);
+            addCfr_error.setText(error);
+            if (flag) {
+                Conference cfr = new Conference(id, name, room, generalDesc, detailDesc, datetime, numberAttendees);
+                ConferenceDAO.insertConference(cfr);
+                paneAddCfrError.setVisible(false);
+                try {
+                    addScreen("/scene/cfr_list.fxml");
+                    fileSaved(fileList, id);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            } else paneAddCfrError.setVisible(true);
         });
     }
 

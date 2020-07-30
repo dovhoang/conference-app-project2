@@ -202,6 +202,7 @@ public class UpdateCfrController extends Controller {
                     ConferenceDAO.updateConference(cfr);
                     try {
                         fileSaved(fileList, id);
+                        titleName.setText(cfr.getName());
                         addScreen("/scene/cfr_detail.fxml");
                     } catch (IOException e) {
                         e.printStackTrace();

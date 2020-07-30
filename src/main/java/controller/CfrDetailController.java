@@ -124,7 +124,7 @@ public class CfrDetailController extends Controller {
             btnRegisterCfr.setText("Đã diễn ra");
             btnRegisterCfr.setDisable(true);
         }
-        int checkAttends;
+        int checkAttends=-1;
         if (UserSession.isLogin()) {
             checkAttends = AttendsDAO.checkAttend(UserSession.getInstance().getUser(), conference);
             if(checkAttends==0){
@@ -137,18 +137,15 @@ public class CfrDetailController extends Controller {
                 btnRegisterCfr.setDisable(true);
             }
         }
-        btnRegisterCfr.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                if (UserSession.isLogin()) {
-                    showAlertConfirmConference(conference, btnRegisterCfr.getText().equals("Đăng ký"));
-                } else {
-                    try {
-                        showAlertWarnSignIn();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+        btnRegisterCfr.setOnAction(event -> {
+            if (UserSession.isLogin()) {
+                int register = AttendsDAO.checkAttend(UserSession.getInstance().getUser(), conference);
+                showAlertConfirmConference(conference, register==-1);
+            } else {
+                try {
+                    showAlertWarnSignIn();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -186,7 +183,7 @@ public class CfrDetailController extends Controller {
             @Override
             public void updateIndex(int i) {
                 super.updateIndex(i);
-                setText(isEmpty() ? "" : Integer.toString(i));
+                setText(isEmpty() ? "" : Integer.toString(i+1));
             }
 
         };
@@ -233,14 +230,11 @@ public class CfrDetailController extends Controller {
     }
 
     private void showAlertWarnSignIn() throws IOException {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        ButtonType ok = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        Alert alert = new Alert(Alert.AlertType.WARNING,"",ok);
         alert.setTitle("Đăng kí tham gia hội nghị");
         alert.setHeaderText("Bạn phải đăng nhập để thực hiện");
         Optional<ButtonType> option = alert.showAndWait();
-        if (option.get() == ButtonType.OK){
-            addScreenSignIn("/scene/sign_in.fxml");
-            titleName.setText(Utils.convertUTF8IntoString("ĐĂNG NHẬP"));
-        }
     }
 
 }

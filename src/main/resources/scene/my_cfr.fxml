@@ -43,7 +43,6 @@
         <TableView fx:id="myCfr_table" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
             <columns>
                 <TableColumn fx:id="myCfr_id" prefWidth="51.0" text="Mã số" />
-            <TableColumn fx:id="myCfr_id1" prefWidth="103.0" text="Mã số hội nghị" />
                 <TableColumn fx:id="myCfr_name" prefWidth="254.0" text="Tên hội nghị" />
                 <TableColumn fx:id="myCfr_time" minWidth="0.0" prefWidth="152.0" text="Thời gian" />
                 <TableColumn fx:id="myCfr_address" prefWidth="298.0" text="Địa điểm" />
